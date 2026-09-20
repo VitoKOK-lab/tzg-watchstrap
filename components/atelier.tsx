@@ -71,7 +71,7 @@ export default function Atelier({inquiriesEnabled=true}:{inquiriesEnabled?:boole
   async function copyReference(){try{await navigator.clipboard.writeText(reference);setCopied(true);}catch{setCopied(false);}}
   return <>
     <a href="#main" className="skip-link">跳至主要內容</a>
-    <header className="site-header"><a href="#" className="wordmark" aria-label="泰熙爾札娜 首頁">泰熙爾札娜<span>JEWELLERY & TIME</span></a><nav aria-label="主要導覽"><a href="#collection">作品系列</a><a href="#design-detail">款式與價格</a><a href="#inquiry-form" className="nav-cta">預約諮詢 <ArrowUpRight size={16}/></a></nav></header>
+    <header className="site-header"><a href="#" className="wordmark" aria-label="泰熙爾札娜 首頁">泰熙爾札娜<span>JEWELLERY & TIME</span></a><nav aria-label="主要導覽"><a href="#collection">款式與價格</a><a href="#inquiry-form" className="nav-cta">預約諮詢 <ArrowUpRight size={16}/></a></nav></header>
     <main id="main">
       <section className="hero hero-product" aria-labelledby="hero-title">
         <div className="hero-stage">
