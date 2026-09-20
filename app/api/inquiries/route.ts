@@ -1,6 +1,5 @@
 import {z} from 'zod';
-import {database} from '@/lib/database';
-import {env} from '@/lib/platform';
+import {inquiryEmailConfig,sendInquiryEmail} from '@/lib/inquiry-email';
 import {budgets,colors,designs,services} from '@/lib/catalog';
 export const dynamic='force-dynamic';
 const schema=z.object({
@@ -17,7 +16,7 @@ async function boundedJson(request:Request){
   const bytes=new Uint8Array(length);let offset=0;for(const chunk of chunks){bytes.set(chunk,offset);offset+=chunk.length;}return JSON.parse(new TextDecoder().decode(bytes));
 }
 export async function POST(request:Request){
-  if(!env.DB)return json({error:'線上表單尚未開放，請透過官方 LINE 預約諮詢。'},503);
+  if(!inquiryEmailConfig())return json({error:'線上表單尚未開放，請透過官方 LINE 預約諮詢。'},503);
   const origin=request.headers.get('origin');if(!origin||origin!==new URL(request.url).origin)return json({error:'請回到網站重新送出諮詢。'},403);
   if(!request.headers.get('content-type')?.includes('application/json'))return json({error:'表單格式不正確，請重新整理後再試。'},415);
   let input:unknown;try{input=await boundedJson(request);}catch{return json({error:'表單內容過長或格式有誤，請縮短補充需求後再試。'},400);}
@@ -28,12 +27,8 @@ export async function POST(request:Request){
   const design=p.service==='collection'?designs.find(d=>d.id===p.design):undefined;
   const option=design?.options.find(o=>o.id===p.material);
   if(p.service==='collection'&&((p.design&&!design)||(p.material&&!option)||(p.color&&!colors.some(c=>c.id===p.color))))return json({error:'款式、材質或顏色選擇有誤，請重新選擇。'},400);
-  const reference=`TZ-${crypto.randomUUID().replace(/-/g,'').slice(0,12).toUpperCase()}`;
-  const now=new Date().toISOString();
   try{
-    const db=database();
-    await db.prepare(`INSERT INTO inquiries (id,reference,service,design,material,color,quote_amount,budget,name,contact_type,contact,watch_model,notes,consent_at,status,created_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,'new',?) ON CONFLICT(id) DO NOTHING`).bind(p.requestId,reference,p.service,design?.id||'',option?.id||'',design?p.color:'',option?(option.total??option.shell):null,p.budget,p.name,p.contactType,p.contact,p.service==='jewellery-watch'?'':p.watchModel,p.notes,now,now).run();
-    const saved=await db.prepare('SELECT reference FROM inquiries WHERE id=?').bind(p.requestId).first<{reference:string}>();
-    if(!saved)throw new Error('Save unavailable');return json({reference:saved.reference},201);
-  }catch{console.error('Inquiry save failed');return json({error:'目前無法確認送出結果，請稍後再試。內容仍保留，重試不會重複建立諮詢。'},503);}
+    const reference=await sendInquiryEmail(p);
+    return json({reference},201);
+  }catch{return json({error:'目前無法確認送出結果，請稍後重試或透過官方 LINE 聯繫。您填寫的內容仍保留。'},503);}
 }

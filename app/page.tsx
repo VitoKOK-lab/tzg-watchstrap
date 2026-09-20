@@ -1,4 +1,4 @@
 import Atelier from '@/components/atelier';
-import {env} from '@/lib/platform';
+import {inquiryEmailConfig} from '@/lib/inquiry-email';
 export const dynamic='force-dynamic';
-export default function Home(){return <Atelier inquiriesEnabled={!!env.DB}/>;}
+export default function Home(){return <Atelier inquiriesEnabled={!!inquiryEmailConfig()}/>;}
