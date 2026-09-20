@@ -57,7 +57,8 @@ try {
   assert.deepEqual(first.options.auth, {user:'luxkey.tw@gmail.com',pass:'abcdefghijklmnop'});
   assert.equal(first.options.disableFileAccess, true);
   assert.equal(first.options.disableUrlAccess, true);
-  assert.equal(first.message.from, '泰熙爾札娜網站諮詢 <luxkey.tw@gmail.com>');
+  assert.equal(first.message.from, '"泰熙爾札娜珠寶錶帶諮詢單-「測試客人」" <luxkey.tw@gmail.com>');
+  assert.ok(first.message.subject.startsWith('泰熙爾札娜珠寶錶帶諮詢單-「測試客人」'));
   assert.deepEqual(first.message.to, ['tzgrotw@gmail.com','luxkey.tw@gmail.com']);
   assert.equal(first.message.replyTo, input.contact);
   assert.equal(first.message.reply_to, undefined);

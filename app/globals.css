@@ -98,3 +98,12 @@
 .media-availability{font-size:.8125rem;color:#73737b;line-height:1.7;text-align:center;padding:0 12px}
 
 .price-inclusions{display:flex;flex-direction:column;gap:5px;margin:0 0 20px;font-size:.8125rem;line-height:1.6;color:#6e6e73}.price-inclusions strong{color:#b12468;font-size:.875rem;font-weight:600}
+
+/* Clear recovery path when email delivery cannot be confirmed. */
+.form-recovery{margin:20px 0;padding:20px;border:1px solid #e7bdce;border-radius:16px;background:#fffafb;scroll-margin-top:110px;outline:none;font-size:.875rem;line-height:1.8}
+.form-recovery h4{margin:0 0 8px;font-size:1rem;font-weight:600;color:#8f174a}
+.form-recovery p+p{margin-top:8px}.recovery-actions{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 10px}.recovery-actions button,.recovery-line{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;border-radius:24px;padding:10px 16px;font-size:.875rem;white-space:normal}
+.recovery-line{background:#eaf8f1;border:1px solid #8ecbab;color:#145a37;font-weight:600}.recovery-line:hover{background:#d9f2e5}.form-recovery .recovery-hint{font-size:.8125rem;color:#4b5c50}.form-recovery small{display:block;margin-top:12px;color:#65656c;line-height:1.8}.form-recovery small a,.form-footnote a{text-decoration:underline;text-underline-offset:3px}.manual-copy{margin-top:12px}.manual-copy label{display:block;margin-bottom:6px;font-size:.8125rem}.manual-copy textarea{background:white;font-size:.8125rem;line-height:1.7}
+@media(max-width:480px){.form-recovery{padding:16px}.recovery-actions{flex-direction:column}.recovery-actions>*{width:100%}}
+
+.manual-copy summary{cursor:pointer;color:#8f174a;font-size:.8125rem;text-decoration:underline;text-underline-offset:3px}.manual-copy[open] summary{margin-bottom:10px}

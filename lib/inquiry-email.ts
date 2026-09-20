@@ -43,10 +43,12 @@ export function inquiryEmail(input: EmailInquiry, from: string) {
   );
   if (input.service !== 'jewellery-watch') rows.push(['Apple Watch 型號／尺寸', input.watchModel || '未填寫']);
   rows.push(['補充需求', input.notes || '未填寫'], ['資料使用同意', '客人已勾選同意供本次諮詢聯繫使用。']);
-  const subject = `【新諮詢】${design?.name || service.title}${color ? `・${color}` : ''}｜${oneLine(input.name)}｜${reference}`;
+  const title = `泰熙爾札娜珠寶錶帶諮詢單-「${oneLine(input.name)}」`;
+  const senderName = title.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+  const subject = `${title}｜${design?.name || service.title}${color ? `・${color}` : ''}｜${reference}`;
   const text = rows.map(([label, value]) => `${label}：${value}`).join('\n\n') + '\n\n此為諮詢申請，並非付款或成立訂單。請依客人留下的聯絡方式跟進。';
   const html = `<div lang="zh-Hant" style="font-family:Helvetica,Arial,sans-serif;color:#222;max-width:640px;margin:auto;padding:24px"><p style="color:#b12468;letter-spacing:2px">泰熙爾札娜 · JEWELLERY &amp; TIME</p><h1 style="font-size:24px">收到新的網站諮詢</h1><table style="width:100%;border-collapse:collapse">${rows.map(([label, value]) => `<tr><th scope="row" style="text-align:left;vertical-align:top;width:135px;padding:12px 8px;border-bottom:1px solid #eee">${escapeHtml(label)}</th><td style="padding:12px 8px;border-bottom:1px solid #eee;white-space:pre-wrap;overflow-wrap:anywhere">${escapeHtml(value)}</td></tr>`).join('')}</table><p style="font-size:13px;color:#666">此為諮詢申請，並非付款或成立訂單。請依客人留下的聯絡方式跟進。</p></div>`;
-  return {reference, message: {from: `泰熙爾札娜網站諮詢 <${from}>`, to: INQUIRY_RECIPIENTS, subject, html, text,
+  return {reference, message: {from: `"${senderName}" <${from}>`, to: INQUIRY_RECIPIENTS, subject, html, text,
     ...(input.contactType === 'email' ? {reply_to: input.contact} : {}),
   }};
 }
