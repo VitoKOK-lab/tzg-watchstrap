@@ -3,12 +3,17 @@ import {budgets, colors, designs, money, services} from '@/lib/catalog';
 
 // Server-side only. Recipients never come from the public form.
 export const INQUIRY_RECIPIENTS = ['tzgrotw@gmail.com', 'luxkey.tw@gmail.com'];
-type EmailEnvironment = {RESEND_API_KEY?: string; INQUIRY_FROM_EMAIL?: string};
+export const GMAIL_SENDER = 'luxkey.tw@gmail.com';
+type EmailEnvironment = {GMAIL_APP_PASSWORD?: string; RESEND_API_KEY?: string; INQUIRY_FROM_EMAIL?: string};
 export function inquiryEmailConfig() {
   const config = env as EmailEnvironment;
+  if (config.GMAIL_APP_PASSWORD?.trim()) {
+    const password = config.GMAIL_APP_PASSWORD.replace(/\s/g, '');
+    return /^[a-zA-Z0-9]{16}$/.test(password) ? {provider: 'gmail' as const, from: GMAIL_SENDER, password} : null;
+  }
   const apiKey = config.RESEND_API_KEY?.trim();
   const from = config.INQUIRY_FROM_EMAIL?.trim();
-  return apiKey && from && /^[^\s<>@]+@[^\s<>@]+\.[^\s<>@]+$/.test(from) ? {apiKey, from} : null;
+  return apiKey && from && /^[^\s<>@]+@[^\s<>@]+\.[^\s<>@]+$/.test(from) ? {provider: 'resend' as const, apiKey, from} : null;
 }
 
 export type EmailInquiry = {
@@ -50,6 +55,32 @@ export async function sendInquiryEmail(input: EmailInquiry) {
   const config = inquiryEmailConfig();
   if (!config) throw new Error('Email not configured');
   const {reference, message} = inquiryEmail(input, config.from);
+  if (config.provider === 'gmail') {
+    const {default: nodemailer} = await import('nodemailer');
+    const transport = nodemailer.createTransport({
+      host: 'smtp.gmail.com', port: 465, secure: true,
+      auth: {user: GMAIL_SENDER, pass: config.password},
+      connectionTimeout: 5000, greetingTimeout: 5000, socketTimeout: 10000,
+      disableFileAccess: true, disableUrlAccess: true,
+    });
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    try {
+      const {reply_to, ...content} = message;
+      const info = await Promise.race([
+        transport.sendMail({...content, replyTo: reply_to,
+          messageId: `<watchstrap-${input.requestId}@gmail.com>`,
+          headers: {'X-Inquiry-Reference': reference},
+        }),
+        new Promise<never>((_, reject) => {timer = setTimeout(() => {transport.close(); reject(new Error('SMTP timeout'));}, 15000);}),
+      ]);
+      const accepted = info.accepted.map(address => address.toLowerCase());
+      if (!INQUIRY_RECIPIENTS.every(address => accepted.includes(address))) throw new Error('Recipients not all accepted');
+      return reference;
+    } finally {
+      clearTimeout(timer);
+      transport.close();
+    }
+  }
   // Stable content + key allow Resend to deduplicate retries for 24 hours.
   const response = await fetch('https://api.resend.com/emails', {
     method: 'POST', headers: {'Authorization': `Bearer ${config.apiKey}`, 'Content-Type': 'application/json', 'Idempotency-Key': `watchstrap-inquiry/${input.requestId}`},

@@ -22,7 +22,7 @@ const mockUrl = `http://127.0.0.1:${provider.address().port}`;
 const preload = join(directory, 'intercept.mjs');
 await writeFile(preload, `const originalFetch = globalThis.fetch; globalThis.fetch = (input, options) => { const url = typeof input === 'string' ? input : input.url || input.href; return originalFetch(url === 'https://api.resend.com/emails' ? ${JSON.stringify(mockUrl)} : input, options); };`);
 const server = spawn(process.execPath, ['--import', pathToFileURL(preload).href, 'node_modules/next/dist/bin/next', 'start', '--hostname', '127.0.0.1', '--port', '5186'], {
-  env: {...process.env, RESEND_API_KEY: 'test-only-key-no-real-access', INQUIRY_FROM_EMAIL: 'inquiries@example.com'},
+  env: {...process.env, GMAIL_APP_PASSWORD: '', RESEND_API_KEY: 'test-only-key-no-real-access', INQUIRY_FROM_EMAIL: 'inquiries@example.com'},
   stdio: ['ignore', 'pipe', 'pipe'],
 });
 const base = 'http://localhost:5186';

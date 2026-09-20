@@ -6,7 +6,7 @@ import {readFile} from 'node:fs/promises';
 const manifest=JSON.parse(await readFile('.next/routes-manifest.json','utf8'));
 assert.ok(manifest.version);
 const port=5184;
-const server=spawn(process.execPath,['node_modules/next/dist/bin/next','start','--hostname','127.0.0.1','--port',String(port)],{stdio:['ignore','pipe','pipe']});
+const server=spawn(process.execPath,['node_modules/next/dist/bin/next','start','--hostname','127.0.0.1','--port',String(port)],{env:{...process.env,GMAIL_APP_PASSWORD:'',RESEND_API_KEY:'',INQUIRY_FROM_EMAIL:''},stdio:['ignore','pipe','pipe']});
 try {
   await new Promise((resolve,reject)=>{
     const timer=setTimeout(()=>reject(new Error('Production server startup timed out')),20000);
