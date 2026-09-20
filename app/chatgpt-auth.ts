@@ -1,5 +1,6 @@
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { supportsChatGPTAuth } from '@/lib/platform';
 
 export type ChatGPTUser = {
   userId: string;
@@ -19,6 +20,8 @@ const SIGN_OUT_PATH = "/signout-with-chatgpt";
 const CALLBACK_PATH = "/callback";
 
 export async function getChatGPTUser(): Promise<ChatGPTUser | null> {
+  // Client-supplied oai-* headers are not authentication on Vercel.
+  if (!supportsChatGPTAuth) return null;
   const requestHeaders = await headers();
   const userId = requestHeaders.get(USER_ID_HEADER);
   const email = requestHeaders.get(USER_EMAIL_HEADER);

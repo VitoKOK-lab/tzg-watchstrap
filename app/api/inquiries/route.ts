@@ -1,5 +1,6 @@
 import {z} from 'zod';
 import {database} from '@/lib/database';
+import {env} from '@/lib/platform';
 import {budgets,colors,designs,services} from '@/lib/catalog';
 export const dynamic='force-dynamic';
 const schema=z.object({
@@ -16,6 +17,7 @@ async function boundedJson(request:Request){
   const bytes=new Uint8Array(length);let offset=0;for(const chunk of chunks){bytes.set(chunk,offset);offset+=chunk.length;}return JSON.parse(new TextDecoder().decode(bytes));
 }
 export async function POST(request:Request){
+  if(!env.DB)return json({error:'線上表單尚未開放，請透過官方 LINE 預約諮詢。'},503);
   const origin=request.headers.get('origin');if(!origin||origin!==new URL(request.url).origin)return json({error:'請回到網站重新送出諮詢。'},403);
   if(!request.headers.get('content-type')?.includes('application/json'))return json({error:'表單格式不正確，請重新整理後再試。'},415);
   let input:unknown;try{input=await boundedJson(request);}catch{return json({error:'表單內容過長或格式有誤，請縮短補充需求後再試。'},400);}
