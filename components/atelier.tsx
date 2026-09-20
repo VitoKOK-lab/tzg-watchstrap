@@ -9,6 +9,7 @@ import {Checkbox} from '@/components/ui/checkbox';
 import {RadioGroup,RadioGroupItem} from '@/components/ui/radio-group';
 import {budgets,colors,designs,services,LINE_URL,lineMessageUrl,money} from '@/lib/catalog';
 import {inquiryLineSummary} from '@/lib/inquiry-line';
+import {HeroIntro} from '@/components/hero-intro';
 
 export default function Atelier({inquiriesEnabled=true}:{inquiriesEnabled?:boolean}){
   const [selected,setSelected]=useState('circle');
@@ -89,6 +90,7 @@ export default function Atelier({inquiriesEnabled=true}:{inquiriesEnabled?:boole
               <source media="(max-width: 760px)" srcSet="/images/hero-g852-7-watch-v7-mobile-640.webp 640w, /images/hero-g852-7-watch-v7-mobile-960.webp 960w" sizes="100vw"/>
               <img src="/images/hero-g852-7-watch-v7-1536.webp" srcSet="/images/hero-g852-7-watch-v7-960.webp 960w, /images/hero-g852-7-watch-v7-1536.webp 1536w" sizes="1320px" width="1672" height="941" alt="35 歲亞洲女性與朋友聊天，手腕佩戴寬版 G852-7 綠境星河珠寶錶帶及斜側可見的 Apple Watch 黑色錶面之 AI 情境示意" fetchPriority="high"/>
             </picture>
+            <HeroIntro/>
             <figcaption><strong>G852-7</strong><span>綠境星河</span><span className="hero-image-note">· AI 模特佩戴示意</span></figcaption>
           </figure>
         </div>
