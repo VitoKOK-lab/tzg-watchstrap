@@ -41,7 +41,7 @@ export function inquiryEmail(input: EmailInquiry, from: string) {
     ['網站定價', option ? money(option.total ?? option.shell) : '依選定款式與材質確認'],
     ['包含內容', option?.total === null ? '單品錶殼，不含錶帶及 Apple Watch 主機；四色同價。' : '錶殼＋錶帶，不含 Apple Watch 主機；四色同價。'],
   );
-  if (input.service !== 'jewellery-watch') rows.push(['Apple Watch 型號／尺寸', input.watchModel || '未填寫']);
+  if (input.service !== 'jewellery-watch') rows.push([input.service === 'collection' ? 'Apple Watch 型號／尺寸' : '腕錶品牌／型號／尺寸', input.watchModel || '未填寫']);
   rows.push(['補充需求', input.notes || '未填寫'], ['資料使用同意', '客人已勾選同意供本次諮詢聯繫使用。']);
   const title = `泰熙爾札娜珠寶錶帶諮詢單-「${oneLine(input.name)}」`;
   const senderName = title.replace(/\\/g, '\\\\').replace(/"/g, '\\"');

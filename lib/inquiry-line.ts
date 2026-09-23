@@ -13,7 +13,7 @@ export function inquiryLineSummary(input: Record<string, unknown>, requestId: st
     if (option) lines.push(`網站定價：${money(option.total ?? option.shell)}`, option.total === null ? '單品錶殼，不含錶帶及 Apple Watch 主機。' : '錶殼＋錶帶，不含 Apple Watch 主機。');
   }
   lines.push(`預算：${budgets.find(item => item.id === value('budget'))?.label || '尚未決定'}`, `稱呼：${value('name')}`, `${value('contactType') === 'email' ? 'Email' : '電話'}：${value('contact')}`);
-  if (value('service') !== 'jewellery-watch' && value('watchModel')) lines.push(`Apple Watch 型號／尺寸：${value('watchModel')}`);
+  if (value('service') !== 'jewellery-watch' && value('watchModel')) lines.push(`${value('service') === 'collection' ? 'Apple Watch 型號／尺寸' : '腕錶品牌／型號／尺寸'}：${value('watchModel')}`);
   if (value('notes')) lines.push(`補充需求：${value('notes')}`);
   return lines.join('\n');
 }

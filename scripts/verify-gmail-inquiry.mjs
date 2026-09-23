@@ -71,13 +71,19 @@ try {
   const phone = await submit({...input, requestId:crypto.randomUUID(), contactType:'phone', contact:'0912345678'});
   assert.equal(phone.status, 201);
   assert.equal(calls.at(-1).message.replyTo, undefined);
+  const bespoke = await submit({...input, requestId:crypto.randomUUID(), service:'custom-band', watchModel:'其他品牌圓形錶／36 mm'});
+  assert.equal(bespoke.status, 201);
+  const bespokeMessage = calls.at(-1).message;
+  assert.match(bespokeMessage.text, /客製錶帶（Apple Watch／其他錶型）/);
+  assert.match(bespokeMessage.text, /腕錶品牌／型號／尺寸：其他品牌圓形錶／36 mm/);
+  assert.ok(!bespokeMessage.text.includes('NT$ 450,000'), 'Bespoke inquiries must not inherit catalog prices');
   for (const failure of ['partial','failure']) {
     mode = failure;
     const response = await submit({...input, requestId:crypto.randomUUID()});
     assert.equal(response.status, 503);
     assert.match((await response.json()).error, /仍保留/);
   }
-  console.log('PASS: Gmail sender, TLS, dual recipients, Reply-To, catalog price, secret isolation, stable message ID, partial and full SMTP failures. No real email sent.');
+  console.log('PASS: Gmail sender, TLS, dual recipients, Reply-To, catalog price, other-watch bespoke details, secret isolation, stable message ID, partial and full SMTP failures. No real email sent.');
 } finally {
   server.kill('SIGTERM');
   await new Promise(resolve => mock.close(resolve));

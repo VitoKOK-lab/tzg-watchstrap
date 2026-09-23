@@ -1,0 +1,66 @@
+{
+  "date": "2026-09-23",
+  "provider": "Higgsfield",
+  "images": [
+    {
+      "file": "public/images/story/hand-setting.webp",
+      "jobId": "5dcc43a0-7867-42e6-ae2a-2fe313e33927",
+      "params": {
+        "model": "gpt_image_2_5",
+        "aspect_ratio": "3:2",
+        "count": 1,
+        "prompt": "Create an exquisite luxury jewelry maison editorial photograph, landscape 3:2. Macro close-up of a real artisan's two anatomically correct hands using fine jeweler tweezers to place ONE small clear gemstone into an empty prong setting on an intricate white precious-metal jewelry bracelet segment, held safely in a jeweler's clamp. Authentic precise stone-setting gesture, convincing fine metal tools, clear tiny prongs, adjacent individually set green rectangular gemstones and clear stones. This is a CONCEPT of hand craftsmanship, not a replica of a specific product. Bright ivory clean atelier, diffused daylight, shallow depth of field but sharply legible main setting and tool contact. Restrained high jewelry campaign quality, quiet human concentration, luxurious material realism. Only cropped hands visible, no face. Main action centered with room around it for responsive crop. Extremely soft shadows, warm white and silver palette with a tiny green accent. No text, logos, lettering, watermark, excessive sparkles, black backgrounds, clutter, gloves covering the setting, or melting metal."
+      }
+    },
+    {
+      "file": "public/images/story/mineral-selection.webp",
+      "jobId": "befcef8d-63d9-4599-be5e-da429cc0775e",
+      "params": {
+        "model": "gpt_image_2_5",
+        "aspect_ratio": "3:2",
+        "count": 1,
+        "prompt": "Luxury high jewelry editorial still life, 3:2 landscape photograph for a mineral merchant's bespoke jewelry website. A small selection of natural rough mineral crystals and precisely faceted loose gems arranged with extraordinary restraint on matte ivory limestone and pale white jeweler paper. One modest deep green rough mineral specimen on left, four emerald-green rectangular faceted stones in a graduated loose row in center, two pale champagne faceted stones and several small clear round stones on right, a silver jeweler loupe subtly at the far edge. Not a museum pile, not a retail inventory catalog. Each object separated by generous white space. Intimate macro scale, exceptional optical detail, beautiful translucent green crystal texture, realistic tiny inclusions in rough mineral, restrained reflections. Soft northern window daylight, very soft shadows, warm white background, sophisticated luxury brand campaign photography. No people, watches, jewelry settings, labels, text, logos, magical sparkle, mineral origin claims, hands or black background. Concept image expressing gem selection, not documentation of a specific mineral species or conversion process."
+      }
+    },
+    {
+      "file": "public/images/story/bespoke-watches.webp",
+      "jobId": "14ade38f-8a19-4977-a2c8-77eea24461ea",
+      "params": {
+        "model": "gpt_image_2_5",
+        "aspect_ratio": "3:2",
+        "count": 1,
+        "prompt": "Create an exceptionally elegant photoreal luxury jewelry design concept photograph, 3:2 horizontal. Three ORIGINAL UNBRANDED women's fine jewelry wristwatches, each complete and plausible, evenly spaced next to each other on a seamless warm white ivory studio surface, all pointing straight vertically with dial at the same height, shown from the same slightly elevated almost overhead front angle, consistent scale. Left: ROUND small ivory dial, minimal slender hour markers and two hands, no numerals, white precious metal case with delicate clear stone border and articulate fine link bracelet with alternating clear stones and understated emerald-green stone details. Center: SQUARE small ivory dial, no text, rose-gold tone metal, angular sophisticated links with clear pavé accents. Right: TONNEAU barrel shaped small ivory dial, no text, pale yellow-gold tone fine metal with a refined bracelet and champagne and clear gemstone details. Entire watch and complete closed bracelet loop for EACH piece fully visible with ample breathing room; no disconnected components. Bespoke high jewelry inspiration, wearable realistic proportions, refined rather than gaudy. Each watch individually visibly distinct in SHAPE and COLOR. Broad diffused daylight, white background, very soft tiny contact shadows, macro material quality, accurate clear stone facets, zero magical sparkling. No brand imitation, recognizable brand designs, monograms, text, logos, crowns, collage dividers, hands, people, labels, blueprints, captions or watermarks. The result illustrates custom jewelry watch possibilities and is not a catalog image of existing products."
+      }
+    }
+  ],
+  "video": {
+    "jobId": "d45ac1bf-9e82-4a7f-b761-ede0b357c9b6",
+    "status": "completed",
+    "params": {
+      "model": "kling3_0",
+      "duration": 10,
+      "mode": "pro",
+      "sound": "off",
+      "aspect_ratio": "16:9",
+      "count": 1,
+      "medias": [
+        {
+          "role": "start_image",
+          "value": "https://tzg-watchstrap.vercel.app/images/green-retouched.webp"
+        },
+        {
+          "role": "end_image",
+          "value": "https://tzg-watchstrap.vercel.app/images/green-retouched.webp"
+        }
+      ],
+      "prompt": "Create a restrained luxury jewelry product launch film of the EXACT G852-7 watch strap accessory and separate EMPTY watch case frame shown in the reference image. Reference is authoritative for all geometry, scale, green rectangular gemstone rows, clear side stones, center hinge, silver metal and both terminal connectors. No watch device, no screen, no hands, no people. Pure seamless white studio background, soft broad high-key light, extremely subtle contact shadows. 0-3 seconds: complete set visible with slow gentle camera push-in, strap diagonal upper left to lower right and separate frame upper right. 3-7 seconds: gracefully push to a close view of the green stones and adjacent clear-stone border, very slight camera drift only in the known front-view plane; jewelry remains entirely rigid and unchanged. 7-10 seconds: smoothly pull back to the original complete composition and settle into a still ending. Natural subtle reflection movement only, no magical sparkles. Preserve the exact number, shape, placement and topology of all visible parts throughout. No bending, morphing, assembling, extra stones, missing stones, changing metal color or imagined reverse side. No full revolution, no text, no logos, no watermark, no sound, no music. Wide 16:9 framing with generous white negative space; fit the entire reference set at start and end without cropping terminals. Photoreal studio macro cinematography, elegant measured motion, clean optical clarity."
+    },
+    "file": "public/videos/green-launch.mp4",
+    "width": 1080,
+    "height": 1080,
+    "durationSeconds": 10.041667,
+    "bytes": 3657534,
+    "audioStreams": 0,
+    "review": "Checked 10 one-second samples; used as labeled AI illustration, not dimensional evidence. Output is square despite requested 16:9."
+  }
+}

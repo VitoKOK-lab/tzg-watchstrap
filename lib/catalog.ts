@@ -2,7 +2,7 @@ export const LINE_URL = 'https://lin.ee/OHHy0Lj';
 export const LINE_ID = '@vmo7014k';
 export const services = [
   { id: 'collection', title: '現有設計錶帶', full: '泰熙爾札娜現有 Apple Watch 錶帶', subtitle: '從五款設計中，找到心動的那一款。' },
-  { id: 'custom-band', title: '客製 Apple Watch 錶帶', full: '客製其他 Apple Watch 錶帶', subtitle: '把您的想法，化為腕間的風格。' },
+  { id: 'custom-band', title: '客製專屬錶帶', full: '客製錶帶（Apple Watch／其他錶型）', subtitle: '不限 Apple Watch，為您的腕錶討論專屬設計。' },
   { id: 'jewellery-watch', title: '訂製珠寶錶', full: '訂製珠寶錶（整支，包含錶面）', subtitle: '從錶面到錶帶，完整表達您的品味。' },
 ] as const;
 export type PriceOption = { id: string; label: string; shell: number; band: number | null; total: number | null };
