@@ -113,3 +113,10 @@
 .hero-visual .hero-intro.is-playing{opacity:1;transition-duration:.35s}
 @media(max-width:760px){.hero-visual .hero-intro{object-position:72% center}}
 @media(prefers-reduced-motion:reduce){.hero-visual .hero-intro{display:none;transition:none}}
+
+/* Direct purchase with a separate consultation path. */
+.purchase-actions{display:flex;flex-direction:column;align-items:stretch;gap:12px}
+.purchase-actions .gold-button{display:flex;align-items:center;justify-content:center;width:100%}
+.purchase-actions .text-link{display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;cursor:pointer;font-size:.875rem;color:#a91e63}
+.purchase-actions .text-link:hover{text-decoration:underline;text-underline-offset:4px}
+.detail-copy>p.purchase-hint{margin:10px 0 0;text-align:center;font-size:.75rem;line-height:1.7;color:#727279}
