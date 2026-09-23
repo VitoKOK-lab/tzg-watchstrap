@@ -1,0 +1,102 @@
+/* A quieter jewellery house identity, kept separate from transactional form styles. */
+.atelier-edition{--editorial-serif:'Noto Serif TC','Songti TC',serif;--editorial-ink:#302e2a;--editorial-muted:#746d63;background:#fff;color:var(--editorial-ink)}
+.atelier-edition .site-header{height:102px;display:grid;grid-template-columns:1fr auto 1fr;padding:0 5.5%;background:#fffffff5;border-color:#ece8e1;backdrop-filter:blur(20px)}
+.atelier-edition .site-header>.wordmark{text-align:center;font-size:1.32rem;font-weight:600;letter-spacing:.2em}
+.atelier-edition .wordmark span{font-size:9px;letter-spacing:.24em;color:#957653;margin-top:4px}
+.header-editorial-link{font-size:.73rem;letter-spacing:.09em;justify-self:start;min-height:44px;display:flex;align-items:center}
+.atelier-edition .site-header nav{justify-self:end;gap:25px;font-size:.73rem;letter-spacing:.07em}
+.atelier-edition .site-header .nav-cta{border:0!important;border-radius:0!important;padding:0!important;min-height:44px;background:none!important;box-shadow:none!important;color:#5b4b38!important;font-size:.73rem;font-weight:400}
+.atelier-edition .hero.hero-product{padding:0 0 0;background:#fff}
+.atelier-edition .hero-stage{width:100%;max-width:none;min-height:630px;height:calc(100svh - 102px);max-height:820px;border-radius:0}
+.atelier-edition .hero-visual img{border-radius:0;object-position:center}
+.atelier-edition .hero-visual:after{background:linear-gradient(90deg,#f8f5efe8 0%,#f8f5efc9 24%,#f8f5ef38 46%,transparent 60%)}
+.atelier-edition .hero-product .hero-copy{padding-left:8%;max-width:590px}
+.atelier-edition .hero-product .hero-copy .eyebrow{font-size:.64rem;letter-spacing:.11em;color:#79654a;font-weight:400}
+.atelier-edition .hero-product h1{font-family:var(--editorial-serif);font-size:clamp(2.5rem,4vw,4.5rem);font-weight:400;line-height:1.55;letter-spacing:.06em;margin:25px 0;color:#37322b}
+.atelier-edition .hero-product h1 span{color:#37322b}
+.atelier-edition .hero-product .hero-copy>p:not(.eyebrow){font-size:.9rem;line-height:2;color:#6f665b;letter-spacing:.04em}
+.atelier-edition .hero-product .hero-actions{margin-top:34px;gap:25px}
+.atelier-edition .gold-button{display:inline-flex!important;border-radius:2px!important;border:1px solid #928574!important;color:#4f4336!important;background:#ffffff66!important;box-shadow:none!important;font-size:.77rem!important;min-height:47px!important;padding:12px 23px!important;font-weight:400;letter-spacing:.075em;backdrop-filter:blur(10px)}
+.atelier-edition .gold-button:hover{background:#fff9f2cf!important;border-color:#b12468!important;color:#b12468!important}
+.atelier-edition .hero-actions .text-link{font-size:.74rem;color:#655442}
+.atelier-edition .hero-visual figcaption{border-radius:1px;font-size:.63rem;right:24px;bottom:20px;background:#fffdf4c7;padding:5px 10px;gap:8px;color:#635a4e}
+.atelier-edition .hero-product .hero-footnote{width:100%;border-top:0;border-bottom:1px solid #e9e3d9;margin:0;padding:18px 24px;font-size:.65rem;letter-spacing:.09em;gap:27px;color:#80715f}
+.atelier-edition .section-heading{align-items:center;justify-content:center;text-align:center;margin-bottom:45px}
+.atelier-edition .section-heading h2,.atelier-edition .consult-intro>h2{font-family:var(--editorial-serif);font-weight:400;font-size:2.45rem;line-height:1.7;letter-spacing:.045em;color:#302e2a}
+.atelier-edition .section-heading .eyebrow,.atelier-edition .consult-intro>.eyebrow{font-size:.62rem;letter-spacing:.18em;color:#8a7352;font-weight:400}
+.atelier-edition .section-heading>p{display:none}
+.atelier-edition .collection-section{padding-top:68px;padding-bottom:85px;border-top:1px solid #ece7dd}
+.atelier-edition .collection-grid{gap:24px}
+.atelier-edition .design-card{padding:0 0 17px;background:#fff;border:0;border-bottom:1px solid #e7e2d9;border-radius:0;box-shadow:none!important}
+.atelier-edition .design-card.active{background:#fff;border-bottom:2px solid #b12468}
+.atelier-edition .design-image{border-radius:0;background:#fff}
+.atelier-edition .design-image>span{display:none}
+.atelier-edition .design-caption{padding:17px 0 0;justify-content:center;text-align:center}
+.atelier-edition .design-caption p{font-size:.59rem;letter-spacing:.14em;color:#978975;font-weight:400}
+.atelier-edition .design-caption h3{font-family:var(--editorial-serif);font-weight:500;font-size:1rem;letter-spacing:.05em;margin-top:7px}
+.atelier-edition .design-caption>svg{display:none}
+.atelier-edition .design-detail{border:0;border-radius:0;background:#fff;margin-top:58px;grid-template-columns:1.1fr 1fr;gap:5%;overflow:visible}
+.atelier-edition .detail-copy{background:#f8f6f1;padding:38px 35px}
+.atelier-edition .detail-copy>h3{font-family:var(--editorial-serif);font-size:2rem;font-weight:400;letter-spacing:.06em}
+.atelier-edition .detail-copy>.eyebrow{font-size:.61rem;letter-spacing:.13em;color:#8a7352;font-weight:400}
+.atelier-edition .detail-copy>p:not(.eyebrow){font-size:.78rem}
+.atelier-edition .detail-gallery{align-self:start;position:sticky;top:110px}
+.atelier-edition .detail-image{border-radius:0!important;border:0!important}
+.atelier-edition .product-media-tabs button{border-radius:0;background:#fff;border-color:#e3ded5}
+.atelier-edition .product-media-tabs button.active{border-color:#9a8463;background:#faf7f2;color:#5d4a31}
+.atelier-edition .media-label strong{font-size:.73rem;font-weight:400}
+.atelier-edition .services-section{padding-top:70px;padding-bottom:66px}
+.atelier-edition .services-section .section-heading{display:none}
+.atelier-edition .service-grid{gap:42px}
+.atelier-edition .service-card{padding:0 0 20px;border:0;border-bottom:1px solid #d8cdbd;border-radius:0;background:#fff;transform:none!important}
+.atelier-edition .service-card:hover{background:#fff;border-color:#b12468}
+.atelier-edition .service-number{display:inline;background:none;border-radius:0;color:#9f8d70;font-weight:400;font-size:.63rem}
+.atelier-edition .service-card h3{font-family:var(--editorial-serif);font-size:1.3rem;font-weight:400;letter-spacing:.05em;margin:13px 0 12px}
+.atelier-edition .service-card p{font-size:.77rem;color:#80776a}
+.atelier-edition .service-action{color:#8a7352;font-size:.67rem;margin-top:20px}
+.atelier-edition .consult-section{border-top:1px solid #e6ddd0;padding-top:70px}
+.atelier-edition .consult-intro>h2{font-size:2.15rem}
+.atelier-edition .form-panel{border-radius:0;background:#f9f7f3;border-color:#e6dfd4}
+.atelier-edition .site-footer{border-color:#e6ddd0;background:#f8f6f1}
+.atelier-edition .mobile-consult .gold-button{border-radius:2px!important}
+@media(max-width:1100px){.atelier-edition .site-header nav{gap:14px}.atelier-edition .hero-product .hero-copy{padding-left:6%;max-width:510px}.atelier-edition .detail-copy{padding:29px 24px}.atelier-edition .collection-grid{gap:15px}}
+@media(max-width:760px){
+ .atelier-edition .site-header{height:72px;padding:0 22px;grid-template-columns:1fr auto}
+ .header-editorial-link{display:none}
+ .atelier-edition .site-header>.wordmark{text-align:left;font-size:1.12rem;letter-spacing:.14em}
+ .atelier-edition .wordmark span{font-size:8px;letter-spacing:.18em;margin-top:2px}
+ .atelier-edition .site-header .nav-cta{font-size:.69rem;gap:5px}
+ .atelier-edition .hero.hero-product{padding:0;text-align:center}
+ .atelier-edition .hero-stage{height:auto;min-height:0;max-height:none;flex-direction:column-reverse;background:#fff;overflow:hidden}
+ .atelier-edition .hero-visual{height:auto;aspect-ratio:1.15;margin:0;width:100%;position:relative}
+ .atelier-edition .hero-visual img{object-position:center}
+ .atelier-edition .hero-visual:after{display:none}
+ .atelier-edition .hero-visual figcaption{right:10px;bottom:10px;font-size:.55rem;padding:3px 6px;gap:5px}
+ .atelier-edition .hero-product .hero-copy{padding:32px 22px 35px;max-width:none}
+ .atelier-edition .hero-product .hero-copy .eyebrow{font-size:.55rem;letter-spacing:.07em}
+ .atelier-edition .hero-product h1{font-size:2.35rem;line-height:1.45;letter-spacing:.08em;margin:15px 0 16px}
+ .atelier-edition .hero-product .hero-copy>p:not(.eyebrow){font-size:.8rem;line-height:1.9}
+ .atelier-edition .hero-product .hero-actions{margin-top:24px;gap:18px;flex-wrap:nowrap}
+ .atelier-edition .hero-actions .gold-button{font-size:.69rem!important;padding:10px 14px!important;min-height:44px!important;gap:10px!important}
+ .atelier-edition .hero-actions .text-link{font-size:.69rem;gap:5px}
+ .atelier-edition .hero-product .hero-footnote{font-size:.56rem;padding:14px 10px;gap:12px;letter-spacing:.03em}
+ .atelier-edition .section-heading{margin-bottom:28px}
+ .atelier-edition .section-heading h2{font-size:1.8rem;letter-spacing:.03em}
+ .atelier-edition .collection-section{padding-top:47px;padding-bottom:58px}
+ .atelier-edition .collection-grid{display:flex;overflow-x:auto;gap:18px;padding-bottom:12px;scroll-snap-type:x proximity}
+ .atelier-edition .design-card{flex:0 0 42%;scroll-snap-align:start;min-width:0;padding-bottom:14px}
+ .atelier-edition .design-caption h3{font-size:.95rem}
+ .atelier-edition .design-detail{grid-template-columns:1fr;gap:22px;margin-top:29px}
+ .atelier-edition .detail-gallery{position:static}
+ .atelier-edition .detail-copy{padding:28px 22px}
+ .atelier-edition .detail-copy>h3{font-size:1.8rem}
+ .atelier-edition .services-section{padding-top:43px;padding-bottom:35px}
+ .atelier-edition .service-grid{grid-template-columns:1fr;gap:26px}
+ .atelier-edition .service-card{display:block;position:relative;padding-left:34px;padding-bottom:20px}
+ .atelier-edition .service-number{position:absolute;left:0;top:5px;width:auto;height:auto}
+ .atelier-edition .service-card h3{font-size:1.2rem;margin:0 0 8px}
+ .atelier-edition .service-action{margin-top:13px;font-size:.65rem}
+ .atelier-edition .consult-section{padding-top:42px}
+ .atelier-edition .consult-intro>h2{font-size:1.95rem}
+ .atelier-edition .mobile-consult{padding-top:9px;padding-bottom:max(9px,env(safe-area-inset-bottom))}
+}
