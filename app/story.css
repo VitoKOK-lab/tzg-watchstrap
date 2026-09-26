@@ -1,7 +1,7 @@
 /* Editorial chapters: image-led, quiet type, and generous changes in scale. */
 .brand-story{--story-ink:#302e2a;--story-muted:#6b6761;color:var(--story-ink);background:#fff}
 .story-width{width:86%;max-width:1320px;margin-inline:auto}
-.brand-story h2,.product-film h2{font-family:'Noto Serif TC','Songti TC',serif;font-weight:400;font-size:clamp(2rem,3.1vw,3.2rem);letter-spacing:.045em;line-height:1.65;margin:0}
+.brand-story h2{font-family:'Noto Serif TC','Songti TC',serif;font-weight:400;font-size:clamp(2rem,3.1vw,3.2rem);letter-spacing:.045em;line-height:1.65;margin:0}
 .brand-story p{line-height:2.1}
 .story-index,.story-intro .eyebrow{font-family:Helvetica,Arial,sans-serif;font-size:.64rem!important;font-weight:400;letter-spacing:.22em;color:#8a7352;margin:0 0 22px!important}
 .story-intro{text-align:center;padding:100px 0 90px}
@@ -51,26 +51,10 @@
 .bespoke-shapes button:hover{color:#b12468}
 .bespoke-consult-note{font-size:.83rem;color:#6b6761;margin:0 0 23px}
 .bespoke-qualification{font-size:.69rem;line-height:1.8!important;color:#777169;margin-top:17px}
-.product-film{display:grid;grid-template-columns:1.1fr .8fr;gap:10%;align-items:center;padding:20px 0 100px}
-.product-film-copy{grid-column:2;grid-row:1}
-.product-film-copy>p:not(.story-index){font-size:.86rem;line-height:2.1;color:#6b6761;margin:25px 0}
-.product-film-copy .text-link{color:#413c35;font-size:.76rem;min-height:44px;border-bottom:1px solid #b7a78d}
-.product-film-gallery{grid-column:1;grid-row:1}
-.product-film-stage{position:relative;aspect-ratio:1;overflow:hidden;background:#fff}
-.product-film-stage img,.product-film-stage video{width:100%;height:100%;object-fit:contain;display:block}
-.product-film-stage video{position:absolute;inset:0}
-.product-film-stage video.film-unavailable{visibility:hidden}
-.product-film-controls{display:flex;justify-content:space-between;gap:15px;align-items:center;border-top:1px solid #e6e0d5;padding-top:9px}
-.product-film-controls p{font-size:.65rem;color:#696762;margin:0;letter-spacing:.05em}
-.product-film-controls p span{color:#76736e}
-.product-film-controls button{display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;min-width:74px;border:0;font-size:.72rem;background:transparent;color:#383631;cursor:pointer}
-.product-film-controls button:hover{color:#b12468}
-.product-film-note,.product-film-error{font-size:.65rem;line-height:1.9;color:#77736d;margin:10px 0 0}
-.product-film-error{color:#9c2059}
 .brand-story.story-motion-ready [data-story-reveal]{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
 .brand-story.story-motion-ready [data-story-reveal].is-visible,.brand-story.story-motion-ready [data-story-reveal]:focus-within{opacity:1;transform:none}
 @media(min-width:1550px){.story-craft-image{width:94%;margin-inline:auto}}
-@media(max-width:1000px){.story-width{width:88%}.story-mineral,.product-film{gap:6%}.bespoke-editorial{gap:6%}.story-bespoke-image{height:490px}.bespoke-editorial-copy h3{font-size:1.65rem}}
+@media(max-width:1000px){.story-width{width:88%}.story-mineral{gap:6%}.bespoke-editorial{gap:6%}.story-bespoke-image{height:490px}.bespoke-editorial-copy h3{font-size:1.65rem}}
 @media(max-width:760px){
  .story-width{width:calc(100% - 48px)}
  .story-intro{padding:66px 0 55px}
@@ -94,14 +78,8 @@
  .story-mineral{grid-template-columns:1fr;gap:30px;padding:0 0 75px}
  .story-mineral .story-figure{aspect-ratio:1.1}
  .story-copy{padding:0 5px}
- .story-copy h2,.product-film h2{font-size:1.8rem;line-height:1.6}
+ .story-copy h2{font-size:1.8rem;line-height:1.6}
  .story-copy>p:not(.story-index){font-size:.875rem;max-width:none;margin-top:20px}
- .product-film{grid-template-columns:1fr;gap:32px;padding:0 0 65px}
- .product-film-copy{grid-column:1;grid-row:2;padding:0 5px}
- .product-film-gallery{grid-column:1;grid-row:1}
- .product-film-copy>p:not(.story-index){font-size:.875rem;margin:18px 0}
- .product-film-note{font-size:.6rem}
- .product-film-controls p{font-size:.62rem;letter-spacing:0}
  .story-bespoke{padding:58px 0 55px;scroll-margin-top:70px}
  .story-bespoke-heading{margin-bottom:28px}
  .story-bespoke-heading h2{font-size:2rem;line-height:1.6}
