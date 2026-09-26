@@ -64,14 +64,17 @@ export function BrandStory() {
 
     <section className="story-craft" id="handcraft" aria-labelledby="craft-title">
       <figure className={`story-figure story-craft-image${craftFilmReveal?' is-revealing':''}`}>
-        <img className="story-film-poster" src="/images/story/green-goldsmith-poster.webp" width="1920" height="1086" loading="lazy" alt="綠境星河 G852-7 珠寶錶帶金工鑲嵌情境，AI 影像示意"/>
-        {!craftFilmUnavailable && <video ref={craftVideo} muted loop playsInline preload="metadata" poster="/images/story/green-goldsmith-poster.webp" aria-label="從逐顆鑲嵌寶石，到綠境星河珠寶錶帶實物細節的無聲影像廣告" onTimeUpdate={event=>setCraftFilmReveal(event.currentTarget.currentTime>=3.5)} onError={()=>setCraftFilmUnavailable(true)}>
-          <source src="/videos/green-goldsmith-campaign-mobile.mp4" type="video/mp4" media="(max-width: 760px)"/>
-          <source src="/videos/green-goldsmith-campaign.mp4" type="video/mp4"/>
+        <picture className="story-film-poster">
+          <source media="(max-width: 760px)" srcSet="/images/story/g852-7-atelier-poster-mobile.webp"/>
+          <img src="/images/story/g852-7-atelier-poster.webp" width="1600" height="900" loading="lazy" alt="高級珠寶工坊裡，工匠檢視綠色方石並準備鑲嵌綠境星河錶帶的 AI 影像示意"/>
+        </picture>
+        {!craftFilmUnavailable && <video ref={craftVideo} muted playsInline preload="metadata" aria-label="工匠挑選綠色方石並逐顆鑲嵌綠境星河珠寶錶帶的無聲工藝意境短片" onTimeUpdate={event=>setCraftFilmReveal(event.currentTarget.currentTime>=4.4)} onError={()=>setCraftFilmUnavailable(true)}>
+          <source src="/videos/g852-7-atelier-film-mobile.mp4" type="video/mp4" media="(max-width: 760px)"/>
+          <source src="/videos/g852-7-atelier-film.mp4" type="video/mp4"/>
         </video>}
-        <div className="story-film-copy story-film-craft-copy" aria-hidden="true"><span>THE ART OF JEWELLERY / G852-7</span><strong>手工，一顆一顆。</strong></div>
-        <div className="story-film-copy story-film-product-copy" aria-hidden="true"><span>G852-7 COLLECTION</span><strong>綠境星河</strong><small>把光，戴在腕間。</small></div>
-        <figcaption>金工段落為 AI 示意，非實際工坊紀錄 · 商品段落取自實物照片</figcaption>
+        <div className="story-film-copy story-film-craft-copy" aria-hidden="true"><span>ATELIER / STONE SELECTION</span><strong>選石，從光開始。</strong></div>
+        <div className="story-film-copy story-film-product-copy" aria-hidden="true"><span>THE HUMAN TOUCH</span><strong>每一顆，親手鑲嵌。</strong><small>綠境星河 · G852-7</small></div>
+        <figcaption>高級珠寶工藝意境 · AI 影像示意，非實際工坊紀錄</figcaption>
       </figure>
       <div className="story-craft-heading story-width" data-story-reveal>
         <p className="story-index">THE HUMAN TOUCH</p>
