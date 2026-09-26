@@ -109,9 +109,9 @@ const watchConcepts = [
 
 export function BespokeStory({onConsult}: {onConsult: () => void}) {
   const root = useStoryReveal();
-  const carousel = useRef<HTMLElement>(null);
+  const carousel = useRef<HTMLDivElement>(null);
   const manualPause = useRef(false);
-  const manualResumeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const manualResumeTimer = useRef<number | null>(null);
   const [shape,setShape] = useState(0);
   useEffect(() => {
     const section = carousel.current;
