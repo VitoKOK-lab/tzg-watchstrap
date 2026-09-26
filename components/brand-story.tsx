@@ -72,11 +72,11 @@ export function BrandStory() {
     <section className="story-craft" id="handcraft" aria-labelledby="craft-title">
       <figure className="story-figure story-craft-image">
         <picture className="story-film-poster">
-          <source media="(max-width: 760px)" srcSet="/images/story/g852-7-real-detail-v3-mobile.webp"/>
-          <img src="/images/story/g852-7-real-detail-v3.webp" width="1280" height="720" loading="lazy" alt="綠境星河珠寶錶帶的完整實物照片"/>
+          <source media="(max-width: 760px)" srcSet="/images/story/g852-7-atelier-v4-mobile.webp"/>
+          <img src="/images/story/g852-7-atelier-v4.webp" width="1600" height="900" loading="lazy" alt="師傅使用鑷子挑選寶石、專注製作珠寶錶帶的工藝情境示意"/>
         </picture>
-        {craftIsMobile !== null && !craftFilmUnavailable && <video key={craftIsMobile?'mobile':'desktop'} className={craftVideoReady?'is-ready':''} ref={craftVideo} src={craftIsMobile?'/videos/g852-7-real-detail-v3-mobile.mp4':'/videos/g852-7-real-detail-v3.mp4'} muted loop playsInline preload="metadata" aria-label="綠境星河錶帶的無聲實物展示影片" onCanPlay={()=>setCraftVideoReady(true)} onError={()=>setCraftFilmUnavailable(true)}/>}
-        <figcaption>綠境星河 · 錶帶實物展示 · Apple Watch 主機不含在內</figcaption>
+        {craftIsMobile !== null && !craftFilmUnavailable && <video key={craftIsMobile?'mobile':'desktop'} className={craftVideoReady?'is-ready':''} ref={craftVideo} src={craftIsMobile?'/videos/g852-7-atelier-v4-mobile.mp4':'/videos/g852-7-atelier-v4.mp4'} muted loop playsInline preload="metadata" aria-label="師傅選石與精工製作珠寶錶帶的無聲情境影片" onCanPlay={()=>setCraftVideoReady(true)} onError={()=>setCraftFilmUnavailable(true)}/>}
+        <figcaption>珠寶工藝情境示意 · 非實際工坊紀錄</figcaption>
       </figure>
       <div className="story-craft-heading story-width" data-story-reveal>
         <p className="story-index">THE HUMAN TOUCH</p>
