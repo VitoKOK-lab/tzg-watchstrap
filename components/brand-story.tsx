@@ -110,9 +110,8 @@ const watchConcepts = [
 export function BespokeStory({onConsult}: {onConsult: () => void}) {
   const root = useStoryReveal();
   const carousel = useRef<HTMLDivElement>(null);
-  const manualPause = useRef(false);
-  const manualResumeTimer = useRef<number | null>(null);
   const [shape,setShape] = useState(0);
+  const [interactionKey,setInteractionKey] = useState(0);
   useEffect(() => {
     const section = carousel.current;
     if (!section || !('IntersectionObserver' in window)) return;
@@ -121,17 +120,15 @@ export function BespokeStory({onConsult}: {onConsult: () => void}) {
     const observer = new IntersectionObserver(([entry]) => { inView = entry.isIntersecting; }, {threshold: 0.2});
     observer.observe(section);
     const timer = window.setInterval(() => {
-      if (inView && !document.hidden && !reducedMotion.matches && !manualPause.current) {
+      if (inView && !document.hidden && !reducedMotion.matches) {
         setShape(current => (current + 1) % watchConcepts.length);
       }
-    }, 5500);
-    return () => { observer.disconnect(); window.clearInterval(timer); if (manualResumeTimer.current) window.clearTimeout(manualResumeTimer.current); };
-  }, []);
+    }, 1500);
+    return () => { observer.disconnect(); window.clearInterval(timer); };
+  }, [interactionKey]);
   const selectShape = (index: number) => {
-    manualPause.current = true;
-    if (manualResumeTimer.current) window.clearTimeout(manualResumeTimer.current);
-    manualResumeTimer.current = window.setTimeout(() => { manualPause.current = false; }, 10000);
     setShape(index);
+    setInteractionKey(current => current + 1);
   };
   return <div className="brand-story" ref={root}>
     <section className="story-bespoke" id="bespoke" aria-labelledby="bespoke-title">
