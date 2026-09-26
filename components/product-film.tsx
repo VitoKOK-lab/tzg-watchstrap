@@ -51,10 +51,10 @@ export function ProductFilm({onExplore}: {onExplore: () => void}) {
     <div className="product-film-gallery">
       <div className="product-film-stage">
         <img src="/images/green-retouched.webp" width="1254" height="1254" loading="lazy" alt="綠境星河珠寶錶帶與獨立錶殼白底圖"/>
-        <video ref={video} src="/videos/green-launch.mp4" poster="/images/green-retouched.webp" muted playsInline preload="none" aria-label="綠境星河無聲 AI 動態示意" className={failed?'film-unavailable':''} onPlay={()=>{setPlaying(true);setEnded(false);}} onPause={()=>setPlaying(false)} onEnded={()=>{setPlaying(false);setEnded(true);}} onError={()=>{setFailed(true);setPlaying(false);}}/>
+        <video ref={video} src="/videos/green-launch.mp4" poster="/images/green-retouched.webp" muted playsInline preload="none" aria-label="綠境星河無聲動態示意" className={failed?'film-unavailable':''} onPlay={()=>{setPlaying(true);setEnded(false);}} onPause={()=>setPlaying(false)} onEnded={()=>{setPlaying(false);setEnded(true);}} onError={()=>{setFailed(true);setPlaying(false);}}/>
       </div>
       <div className="product-film-controls">
-        <p>AI 動態示意 <span>· 10 秒 · 無聲</span></p>
+        <p>商品動態示意 <span>· 10 秒 · 無聲</span></p>
         <button type="button" onClick={togglePlayback} aria-label={playing?'暫停綠境星河短片':ended?'重播綠境星河短片':'播放綠境星河短片'}>{playing?<Pause size={16}/>:ended?<RotateCcw size={16}/>:<Play size={16}/>}<span>{playing?'暫停':ended?'重播':failed?'重試播放':'播放'}</span></button>
       </div>
       {failed&&<p className="product-film-error" role="status">影片暫時無法播放，您仍可查看商品照片。</p>}

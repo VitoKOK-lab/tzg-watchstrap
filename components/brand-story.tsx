@@ -66,7 +66,7 @@ export function BrandStory() {
       <figure className={`story-figure story-craft-image${craftFilmReveal?' is-revealing':''}`}>
         <picture className="story-film-poster">
           <source media="(max-width: 760px)" srcSet="/images/story/g852-7-atelier-poster-mobile.webp"/>
-          <img src="/images/story/g852-7-atelier-poster.webp" width="1600" height="900" loading="lazy" alt="高級珠寶工坊裡，工匠檢視綠色方石並準備鑲嵌綠境星河錶帶的 AI 影像示意"/>
+          <img src="/images/story/g852-7-atelier-poster.webp" width="1600" height="900" loading="lazy" alt="工匠檢視綠色方石並準備鑲嵌珠寶錶帶的工藝情境示意"/>
         </picture>
         {!craftFilmUnavailable && <video ref={craftVideo} muted playsInline preload="metadata" aria-label="工匠挑選綠色方石並逐顆鑲嵌綠境星河珠寶錶帶的無聲工藝意境短片" onTimeUpdate={event=>setCraftFilmReveal(event.currentTarget.currentTime>=4.4)} onError={()=>setCraftFilmUnavailable(true)}>
           <source src="/videos/g852-7-atelier-film-mobile.mp4" type="video/mp4" media="(max-width: 760px)"/>
@@ -74,7 +74,7 @@ export function BrandStory() {
         </video>}
         <div className="story-film-copy story-film-craft-copy" aria-hidden="true"><span>ATELIER / STONE SELECTION</span><strong>選石，從光開始。</strong></div>
         <div className="story-film-copy story-film-product-copy" aria-hidden="true"><span>THE HUMAN TOUCH</span><strong>每一顆，親手鑲嵌。</strong><small>綠境星河 · G852-7</small></div>
-        <figcaption>高級珠寶工藝意境 · AI 影像示意，非實際工坊紀錄</figcaption>
+        <figcaption>珠寶工藝情境示意 · 非實際工坊紀錄</figcaption>
       </figure>
       <div className="story-craft-heading story-width" data-story-reveal>
         <p className="story-index">THE HUMAN TOUCH</p>
@@ -86,8 +86,8 @@ export function BrandStory() {
 
     <section className="story-mineral story-width" aria-labelledby="mineral-title">
       <figure className="story-figure" data-story-reveal>
-        <img src="/images/story/bespoke-strap-consultation.webp" width="1600" height="1195" loading="lazy" alt="私人珠寶錶帶訂製諮詢，展示綠色寶石、錶帶設計草圖及錶帶樣品的 AI 情境示意"/>
-        <figcaption>珠寶錶帶訂製諮詢 · AI 情境示意</figcaption>
+        <img src="/images/story/bespoke-strap-consultation.webp" width="1600" height="1195" loading="lazy" alt="展示寶石、設計草圖與錶帶樣品的私人珠寶錶帶訂製情境示意"/>
+        <figcaption>珠寶錶帶訂製諮詢示意</figcaption>
       </figure>
       <div className="story-copy" data-story-reveal>
         <p className="story-index">A MINERAL MERCHANT’S EYE</p>
@@ -100,9 +100,9 @@ export function BrandStory() {
 }
 
 const watchConcepts = [
-  {shape:'圓形',english:'THE ROUND',name:'圓融，亦有鋒芒。',detail:'以柔和輪廓，襯托寶石與鏈節的節奏。'},
-  {shape:'方形',english:'THE SQUARE',name:'俐落，自成風格。',detail:'以清晰線條，延伸金工與幾何的表情。'},
-  {shape:'酒桶形',english:'THE TONNEAU',name:'曲線，恰如其分。',detail:'沿著錶型弧度，探索珠寶搭配的可能。'},
+  {shape:'Apple Watch',english:'APPLE WATCH',name:'為熟悉的日常，鑲上獨特光彩。',detail:'由錶帶接點、尺寸與金屬色出發，討論專屬寶石排列。',image:'/images/story/bespoke-apple-watch.webp',alt:'Apple Watch 錶殼與可拆換珠寶錶帶分開陳列，清楚展示滑軌式錶帶接點的訂製示意'},
+  {shape:'AP 類型',english:'OCTAGONAL SPORTS WATCH',name:'俐落稜角，延伸珠寶的個性。',detail:'以可更換錶帶的八角形運動腕錶為例，依接點設計珠寶錶帶。',image:'/images/story/bespoke-ap-type.webp',alt:'八角形運動腕錶錶殼與可拆換寶石錶帶分開陳列，展示錶耳與錶帶接點的訂製示意'},
+  {shape:'PP 類型',english:'ROUNDED SPORTS WATCH',name:'經典弧線，映出個人風格。',detail:'以可更換錶帶的圓角運動腕錶為例，依型號規劃選石與比例。',image:'/images/story/bespoke-pp-type.webp',alt:'圓角運動腕錶錶殼與可拆換寶石錶帶分開陳列，展示錶耳與錶帶接點的訂製示意'},
 ];
 
 export function BespokeStory({onConsult}: {onConsult: () => void}) {
@@ -118,13 +118,13 @@ export function BespokeStory({onConsult}: {onConsult: () => void}) {
       </div>
       <div className="bespoke-editorial story-width" data-story-reveal>
         <figure className="story-figure story-bespoke-image">
-          <div className="bespoke-crop"><img src="/images/story/bespoke-watches.webp" width="1600" height="1075" loading="lazy" style={{transform:`translateX(-${shape*100/3}%)`}} alt={`${concept.shape}腕錶與珠寶錶帶的 AI 訂製概念示意，非現售款式`}/></div>
-          <figcaption>AI 訂製概念示意 · 非現售款式</figcaption>
+          <img src={concept.image} width="1086" height="1448" loading="lazy" alt={concept.alt}/>
+          <figcaption>珠寶錶帶訂製示意 · 實際依腕錶型號與需求確認</figcaption>
         </figure>
         <div className="bespoke-editorial-copy">
           <p className="story-index">{concept.english}</p>
           <div className="bespoke-concept-title" aria-live="polite"><h3>{concept.name}</h3><p>{concept.detail}</p></div>
-          <div className="bespoke-shapes" role="group" aria-label="探索訂製錶型">{watchConcepts.map((item,index)=><button type="button" key={item.shape} aria-pressed={shape===index} onClick={()=>setShape(index)}>{item.shape}</button>)}</div>
+          <div className="bespoke-shapes" role="group" aria-label="可更換錶帶的腕錶類型示意">{watchConcepts.map((item,index)=><button type="button" key={item.shape} aria-pressed={shape===index} onClick={()=>setShape(index)}>{item.shape}</button>)}</div>
           <p className="bespoke-consult-note">分享腕錶品牌、型號與尺寸，<br/>與我們討論選石、金工與專屬設計。</p>
           <button type="button" className="gold-button" onClick={onConsult}>預約訂製諮詢 <ArrowUpRight size={16}/></button>
           <p className="bespoke-qualification">實際結構、可製作範圍及報價，依您的錶款確認。</p>
