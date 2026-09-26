@@ -54,7 +54,10 @@
 .atelier-edition .service-card h3{font-family:var(--editorial-serif);font-size:1.3rem;font-weight:400;letter-spacing:.05em;margin:13px 0 12px}
 .atelier-edition .service-card p{font-size:.77rem;color:#80776a}
 .atelier-edition .service-action{color:#8a7352;font-size:.67rem;margin-top:20px}
-.atelier-edition .consult-section{border-top:1px solid #e6ddd0;padding-top:70px}
+.atelier-edition .consult-section{border-top:1px solid #e6ddd0;padding-top:70px;grid-template-areas:"intro form" "contact form";grid-template-rows:auto 1fr}
+.atelier-edition .consult-intro{grid-area:intro}
+.atelier-edition .consult-section>.form-panel{grid-area:form}
+.atelier-edition .consult-section>.contact-details{grid-area:contact;align-self:start;margin-right:65px}
 .atelier-edition .consult-intro>h2{font-size:2.15rem}
 .atelier-edition .form-panel{border-radius:0;background:#f9f7f3;border-color:#e6dfd4}
 .atelier-edition .site-footer{border-color:#e6ddd0;background:#f8f6f1}
@@ -96,7 +99,8 @@
  .atelier-edition .service-number{position:absolute;left:0;top:5px;width:auto;height:auto}
  .atelier-edition .service-card h3{font-size:1.2rem;margin:0 0 8px}
  .atelier-edition .service-action{margin-top:13px;font-size:.65rem}
- .atelier-edition .consult-section{padding-top:42px}
+ .atelier-edition .consult-section{display:flex;flex-direction:column;padding-top:42px}
+ .atelier-edition .consult-section>.contact-details{margin:28px 0 0}
  .atelier-edition .consult-intro>h2{font-size:1.95rem}
  .atelier-edition .mobile-consult{padding-top:9px;padding-bottom:max(9px,env(safe-area-inset-bottom))}
 }
