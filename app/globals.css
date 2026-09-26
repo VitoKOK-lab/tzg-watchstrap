@@ -93,6 +93,10 @@
 .video-thumb svg{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#fff;filter:drop-shadow(0 1px 3px #000)}
 .media-label{display:flex;flex-direction:column;gap:4px;min-width:0}
 .media-label strong{font-size:.875rem;font-weight:600;line-height:1.4}
+.lifestyle-thumbnails{display:flex;gap:10px;overflow-x:auto;padding:0 16px 12px;scrollbar-width:thin;scrollbar-color:#e79ac2 #f5f5f7}
+.lifestyle-thumbnails button{flex:0 0 126px;min-width:0;padding:6px;border:1px solid #dddde3;border-radius:14px;background:#fff;color:#66666b;font-size:.6875rem;line-height:1.4;text-align:left;cursor:pointer;transition:border-color .2s,box-shadow .2s}
+.lifestyle-thumbnails button.active{border-color:#b12468;box-shadow:0 0 0 1px rgba(177,36,104,.12)}
+.lifestyle-thumbnails img{width:100%;aspect-ratio:1.25;object-fit:cover;object-position:center;border-radius:9px;margin-bottom:5px;background:#f5f5f7}
 .media-label small{font-size:.6875rem;line-height:1.4;color:#73737b}
 @media(max-width:380px){.product-media-tabs{gap:8px;padding-inline:8px}.media-thumb{flex-basis:44px;height:48px}.product-media-tabs button{gap:6px}.media-label strong{font-size:.8125rem}}
 .media-availability{font-size:.8125rem;color:#73737b;line-height:1.7;text-align:center;padding:0 12px}
