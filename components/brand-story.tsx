@@ -109,8 +109,30 @@ const watchConcepts = [
 
 export function BespokeStory({onConsult}: {onConsult: () => void}) {
   const root = useStoryReveal();
+  const carousel = useRef<HTMLElement>(null);
+  const manualPause = useRef(false);
+  const manualResumeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [shape,setShape] = useState(0);
-  const concept=watchConcepts[shape];
+  useEffect(() => {
+    const section = carousel.current;
+    if (!section || !('IntersectionObserver' in window)) return;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let inView = false;
+    const observer = new IntersectionObserver(([entry]) => { inView = entry.isIntersecting; }, {threshold: 0.2});
+    observer.observe(section);
+    const timer = window.setInterval(() => {
+      if (inView && !document.hidden && !reducedMotion.matches && !manualPause.current) {
+        setShape(current => (current + 1) % watchConcepts.length);
+      }
+    }, 5500);
+    return () => { observer.disconnect(); window.clearInterval(timer); if (manualResumeTimer.current) window.clearTimeout(manualResumeTimer.current); };
+  }, []);
+  const selectShape = (index: number) => {
+    manualPause.current = true;
+    if (manualResumeTimer.current) window.clearTimeout(manualResumeTimer.current);
+    manualResumeTimer.current = window.setTimeout(() => { manualPause.current = false; }, 10000);
+    setShape(index);
+  };
   return <div className="brand-story" ref={root}>
     <section className="story-bespoke" id="bespoke" aria-labelledby="bespoke-title">
       <div className="story-bespoke-heading story-width" data-story-reveal>
@@ -118,15 +140,14 @@ export function BespokeStory({onConsult}: {onConsult: () => void}) {
         <h2 id="bespoke-title">為您而作，<br/>不止一種可能。</h2>
         <p>不只 Apple Watch。從您珍愛的腕錶出發，<br/>讓寶石、金屬與個人風格，有一場專屬的相遇。</p>
       </div>
-      <div className="bespoke-editorial story-width" data-story-reveal>
+      <div className="bespoke-editorial story-width" data-story-reveal ref={carousel}>
         <figure className="story-figure story-bespoke-image">
-          <img src={concept.image} width="1086" height="1448" loading="lazy" alt={concept.alt}/>
+          {watchConcepts.map((item,index)=><img className={`bespoke-scene-image${shape===index?' is-active':''}`} key={item.shape} src={item.image} width="1086" height="1448" loading="eager" alt={item.alt} aria-hidden={shape!==index}/>)}
           <figcaption>珠寶錶帶訂製示意 · 實際依腕錶型號與需求確認</figcaption>
         </figure>
         <div className="bespoke-editorial-copy">
-          <p className="story-index">{concept.english}</p>
-          <div className="bespoke-concept-title" aria-live="polite"><h3>{concept.name}</h3><p>{concept.detail}</p></div>
-          <div className="bespoke-shapes" role="group" aria-label="可更換錶帶的腕錶類型示意">{watchConcepts.map((item,index)=><button type="button" key={item.shape} aria-pressed={shape===index} onClick={()=>setShape(index)}>{item.shape}</button>)}</div>
+          <div className="bespoke-copy-stack">{watchConcepts.map((item,index)=><div className={`bespoke-copy-slide${shape===index?' is-active':''}`} key={item.shape} aria-hidden={shape!==index}><p className="story-index">{item.english}</p><div className="bespoke-concept-title"><h3>{item.name}</h3><p>{item.detail}</p></div></div>)}</div>
+          <div className="bespoke-shapes" role="group" aria-label="可更換錶帶的腕錶類型示意">{watchConcepts.map((item,index)=><button type="button" key={item.shape} aria-pressed={shape===index} onClick={()=>selectShape(index)}>{item.shape}</button>)}</div>
           <p className="bespoke-consult-note">分享腕錶品牌、型號與尺寸，<br/>與我們討論選石、金工與專屬設計。</p>
           <button type="button" className="gold-button" onClick={onConsult}>預約訂製諮詢 <ArrowUpRight size={16}/></button>
           <p className="bespoke-qualification">實際結構、可製作範圍及報價，依您的錶款確認。</p>
