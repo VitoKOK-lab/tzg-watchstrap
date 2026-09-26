@@ -24,8 +24,11 @@ export type EmailInquiry = {
 const escapeHtml = (value: string) => value.replace(/[&<>"']/g, char => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[char]!));
 const oneLine = (value: string) => value.replace(/[\r\n\u0000-\u001f\u007f]+/g, ' ').trim();
 
+// Shared with the D1 write path so the email and the back-office record carry the same reference.
+export const referenceFor = (requestId: string) => `TZ-${requestId.replace(/-/g, '').slice(0, 16).toUpperCase()}`;
+
 export function inquiryEmail(input: EmailInquiry, from: string) {
-  const reference = `TZ-${input.requestId.replace(/-/g, '').slice(0, 16).toUpperCase()}`;
+  const reference = referenceFor(input.requestId);
   const service = services.find(item => item.id === input.service)!;
   const design = input.service === 'collection' ? designs.find(item => item.id === input.design) : undefined;
   const option = design?.options.find(item => item.id === input.material);
