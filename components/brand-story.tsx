@@ -39,14 +39,21 @@ function useStoryReveal() {
 export function BrandStory() {
   const root = useStoryReveal();
   const craftVideo = useRef<HTMLVideoElement>(null);
-  const [craftFilmReveal,setCraftFilmReveal] = useState(false);
+  const [craftIsMobile,setCraftIsMobile] = useState<boolean | null>(null);
+  const [craftVideoReady,setCraftVideoReady] = useState(false);
   const [craftFilmUnavailable,setCraftFilmUnavailable] = useState(false);
   useEffect(() => {
+    const query = window.matchMedia('(max-width: 760px)');
+    const update = () => { setCraftIsMobile(query.matches); setCraftVideoReady(false); setCraftFilmUnavailable(false); };
+    update();
+    query.addEventListener('change',update);
+    return () => query.removeEventListener('change',update);
+  }, []);
+  useEffect(() => {
     const video = craftVideo.current;
-    if (!video || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (craftIsMobile === null || !video || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
-        video.currentTime = 0;
         void video.play().catch(() => setCraftFilmUnavailable(true));
       } else {
         video.pause();
@@ -54,7 +61,7 @@ export function BrandStory() {
     }, {threshold: 0.2});
     observer.observe(video);
     return () => observer.disconnect();
-  }, []);
+  }, [craftIsMobile]);
   return <div className="brand-story" ref={root} id="craftsmanship">
     <section className="story-intro story-width" aria-labelledby="story-title" data-story-reveal>
       <p className="eyebrow">THE ART OF JEWELLERY</p>
@@ -63,23 +70,18 @@ export function BrandStory() {
     </section>
 
     <section className="story-craft" id="handcraft" aria-labelledby="craft-title">
-      <figure className={`story-figure story-craft-image${craftFilmReveal?' is-revealing':''}`}>
+      <figure className="story-figure story-craft-image">
         <picture className="story-film-poster">
-          <source media="(max-width: 760px)" srcSet="/images/story/g852-7-atelier-poster-mobile.webp"/>
-          <img src="/images/story/g852-7-atelier-poster.webp" width="1600" height="900" loading="lazy" alt="工匠檢視綠色方石並準備鑲嵌珠寶錶帶的工藝情境示意"/>
+          <source media="(max-width: 760px)" srcSet="/images/story/g852-7-real-detail-v3-mobile.webp"/>
+          <img src="/images/story/g852-7-real-detail-v3.webp" width="1280" height="720" loading="lazy" alt="綠境星河珠寶錶帶的完整實物照片"/>
         </picture>
-        {!craftFilmUnavailable && <video ref={craftVideo} muted playsInline preload="metadata" aria-label="工匠挑選綠色方石並逐顆鑲嵌綠境星河珠寶錶帶的無聲工藝意境短片" onTimeUpdate={event=>setCraftFilmReveal(event.currentTarget.currentTime>=4.4)} onError={()=>setCraftFilmUnavailable(true)}>
-          <source src="/videos/g852-7-atelier-film-mobile.mp4" type="video/mp4" media="(max-width: 760px)"/>
-          <source src="/videos/g852-7-atelier-film.mp4" type="video/mp4"/>
-        </video>}
-        <div className="story-film-copy story-film-craft-copy" aria-hidden="true"><span>ATELIER / STONE SELECTION</span><strong>選石，從光開始。</strong></div>
-        <div className="story-film-copy story-film-product-copy" aria-hidden="true"><span>THE HUMAN TOUCH</span><strong>每一顆，親手鑲嵌。</strong><small>綠境星河 · G852-7</small></div>
-        <figcaption>珠寶工藝情境示意 · 非實際工坊紀錄</figcaption>
+        {craftIsMobile !== null && !craftFilmUnavailable && <video key={craftIsMobile?'mobile':'desktop'} className={craftVideoReady?'is-ready':''} ref={craftVideo} src={craftIsMobile?'/videos/g852-7-real-detail-v3-mobile.mp4':'/videos/g852-7-real-detail-v3.mp4'} muted loop playsInline preload="metadata" aria-label="綠境星河錶帶的無聲實物展示影片" onCanPlay={()=>setCraftVideoReady(true)} onError={()=>setCraftFilmUnavailable(true)}/>}
+        <figcaption>綠境星河 · 錶帶實物展示 · Apple Watch 主機不含在內</figcaption>
       </figure>
       <div className="story-craft-heading story-width" data-story-reveal>
         <p className="story-index">THE HUMAN TOUCH</p>
         <h2 id="craft-title">一顆一顆，成就一件。</h2>
-        <p>每一件皆由工匠手工製作。<br/>每一顆寶石，皆由工匠親手鑲嵌。</p>
+        <p>從礦石商選石，到工匠逐顆鑲嵌。<br/>每一道金工細節，都為一件值得珍藏的珠寶錶帶而作。</p>
         <a href="#bespoke" className="story-chapter-link">探索專屬訂製 <ArrowUpRight size={15}/></a>
       </div>
     </section>
