@@ -1,5 +1,6 @@
 import {z} from 'zod';
 import {inquiryEmailConfig,sendInquiryEmail} from '@/lib/inquiry-email';
+import {saveInquiry} from '@/lib/inquiry-db';
 import {budgets,colors,designs,services} from '@/lib/catalog';
 export const dynamic='force-dynamic';
 const schema=z.object({
@@ -27,8 +28,11 @@ export async function POST(request:Request){
   const design=p.service==='collection'?designs.find(d=>d.id===p.design):undefined;
   const option=design?.options.find(o=>o.id===p.material);
   if(p.service==='collection'&&((p.design&&!design)||(p.material&&!option)||(p.color&&!colors.some(c=>c.id===p.color))))return json({error:'款式、材質或顏色選擇有誤，請重新選擇。'},400);
+  const quoteAmount=p.service==='collection'&&option?option.total??option.shell:null;
+  const dbWrite=saveInquiry(p,quoteAmount).catch(error=>{console.error('D1 inquiry write failed',error);});
   try{
     const reference=await sendInquiryEmail(p);
+    await dbWrite;
     return json({reference},201);
-  }catch{return json({error:'目前無法確認送出結果，請稍後重試或透過官方 LINE 聯繫。您填寫的內容仍保留。'},503);}
+  }catch{await dbWrite;return json({error:'目前無法確認送出結果，請稍後重試或透過官方 LINE 聯繫。您填寫的內容仍保留。'},503);}
 }

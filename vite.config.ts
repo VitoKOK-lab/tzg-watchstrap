@@ -4,8 +4,10 @@ import hostingConfig from "./.openai/hosting.json";
 import { readExecutionProfile } from "./scripts/execution-profile.mjs";
 import { sites } from "./build/sites-vite-plugin";
 
-const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
-  "00000000-0000-4000-8000-000000000000";
+// Real D1 database provisioned for this Worker's Cloudflare account
+// (created via `d1 database create tzg-watchstrap-db`).
+const CLOUDFLARE_DATABASE_NAME = "tzg-watchstrap-db";
+const CLOUDFLARE_DATABASE_ID = "1f6fe9a3-e166-4908-ab65-a66a087f5ccd";
 
 const { d1, r2 } = hostingConfig;
 
@@ -20,8 +22,8 @@ const localBindingConfig = {
     ? [
         {
           binding: d1,
-          database_name: "site-creator-d1",
-          database_id: SITE_CREATOR_PLACEHOLDER_DATABASE_ID,
+          database_name: CLOUDFLARE_DATABASE_NAME,
+          database_id: CLOUDFLARE_DATABASE_ID,
         },
       ]
     : [],
