@@ -15,6 +15,17 @@
 .story-craft{scroll-margin-top:98px}
 .story-craft-image{width:100%;height:clamp(480px,51vw,820px)}
 .story-craft-image img{height:100%;object-position:center 54%}
+.story-craft-image .story-film-poster,.story-craft-image video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.story-craft-image video{z-index:1}
+.story-film-copy{position:absolute;z-index:2;pointer-events:none;display:flex;flex-direction:column;align-items:flex-start;color:#302b25;transition:opacity .55s ease,transform .55s ease}
+.story-film-copy span{font:500 clamp(.58rem,.85vw,.78rem)/1.5 Helvetica,Arial,sans-serif;letter-spacing:.22em;color:#8a7352}
+.story-film-copy strong{font-family:'Noto Serif TC','Songti TC',serif;font-weight:400;font-size:clamp(2rem,4.1vw,4.8rem);letter-spacing:.08em;line-height:1.5}
+.story-film-copy small{font-family:'Noto Serif TC','Songti TC',serif;font-size:clamp(.85rem,1.2vw,1.2rem);letter-spacing:.13em;margin-top:10px}
+.story-film-craft-copy{left:7%;bottom:10%;padding:23px 5% 20px 2%;background:linear-gradient(90deg,#faf8f1ed,#faf8f1a8 72%,transparent);opacity:1}
+.story-film-product-copy{left:7%;top:33%;opacity:0;transform:translateY(18px)}
+.story-craft-image.is-revealing .story-film-craft-copy{opacity:0;transform:translateY(16px)}
+.story-craft-image.is-revealing .story-film-product-copy{opacity:1;transform:none}
+.story-craft-image figcaption{z-index:3}
 .story-craft-heading{text-align:center;padding:68px 0 90px}
 .story-craft-heading h2{font-size:clamp(2rem,3.4vw,3.35rem)}
 .story-craft-heading>p:not(.story-index){color:var(--story-muted);font-size:.9rem;letter-spacing:.06em;margin-top:22px}
@@ -67,8 +78,14 @@
  .story-intro>p:not(.eyebrow){font-size:.85rem;margin-top:18px;letter-spacing:0}
  .story-index,.story-intro .eyebrow{font-size:.57rem!important;letter-spacing:.17em;margin-bottom:18px!important}
  .story-craft{scroll-margin-top:70px}
- .story-craft-image{height:auto;aspect-ratio:.94}
+ .story-craft-image{height:auto;aspect-ratio:9/16}
  .story-craft-image img{object-position:53% center}
+ .story-craft-image .story-film-poster,.story-craft-image video{object-position:center}
+ .story-film-craft-copy{left:0;bottom:7%;width:100%;padding:20px 20px 42px;background:linear-gradient(0deg,#f8f5eaf0,#f8f5ea8a 75%,transparent)}
+ .story-film-product-copy{left:0;right:0;top:7%;align-items:center;text-align:center;padding:0 15px}
+ .story-film-copy span{font-size:.58rem}
+ .story-film-copy strong{font-size:clamp(1.8rem,7vw,2.7rem)}
+ .story-film-copy small{font-size:.82rem;margin-top:3px}
  .story-figure figcaption{left:10px;bottom:10px;max-width:calc(100% - 20px);font-size:9px;padding:4px 6px}
  .story-craft-heading{padding:42px 0 65px}
  .story-craft-heading h2{font-size:clamp(1.6rem,6.3vw,2.1rem);letter-spacing:.02em}
@@ -98,4 +115,4 @@
  .bespoke-consult-note{font-size:.85rem;margin-bottom:20px}
  .bespoke-qualification{font-size:.64rem}
 }
-@media(prefers-reduced-motion:reduce){.brand-story.story-motion-ready [data-story-reveal]{opacity:1;transform:none;transition:none}.bespoke-crop img{transition:none}}
+@media(prefers-reduced-motion:reduce){.brand-story.story-motion-ready [data-story-reveal]{opacity:1;transform:none;transition:none}.bespoke-crop img{transition:none}.story-craft-image video{display:none}.story-film-copy{transition:none}}

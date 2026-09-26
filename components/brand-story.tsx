@@ -38,6 +38,23 @@ function useStoryReveal() {
 
 export function BrandStory() {
   const root = useStoryReveal();
+  const craftVideo = useRef<HTMLVideoElement>(null);
+  const [craftFilmReveal,setCraftFilmReveal] = useState(false);
+  const [craftFilmUnavailable,setCraftFilmUnavailable] = useState(false);
+  useEffect(() => {
+    const video = craftVideo.current;
+    if (!video || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        video.currentTime = 0;
+        void video.play().catch(() => setCraftFilmUnavailable(true));
+      } else {
+        video.pause();
+      }
+    }, {threshold: 0.2});
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
   return <div className="brand-story" ref={root} id="craftsmanship">
     <section className="story-intro story-width" aria-labelledby="story-title" data-story-reveal>
       <p className="eyebrow">THE ART OF JEWELLERY</p>
@@ -46,9 +63,15 @@ export function BrandStory() {
     </section>
 
     <section className="story-craft" id="handcraft" aria-labelledby="craft-title">
-      <figure className="story-figure story-craft-image" data-story-reveal>
-        <img src="/images/story/hand-setting.webp" width="1600" height="1075" loading="lazy" alt="工匠以鑷子逐顆放置寶石於金屬鑲座的 AI 工藝示意，非實際工坊紀錄"/>
-        <figcaption>手工鑲嵌概念 · AI 示意，非實際工坊紀錄</figcaption>
+      <figure className={`story-figure story-craft-image${craftFilmReveal?' is-revealing':''}`}>
+        <img className="story-film-poster" src="/images/story/green-goldsmith-poster.webp" width="1920" height="1086" loading="lazy" alt="綠境星河 G852-7 珠寶錶帶金工鑲嵌情境，AI 影像示意"/>
+        {!craftFilmUnavailable && <video ref={craftVideo} muted loop playsInline preload="metadata" poster="/images/story/green-goldsmith-poster.webp" aria-label="從逐顆鑲嵌寶石，到綠境星河珠寶錶帶實物細節的無聲影像廣告" onTimeUpdate={event=>setCraftFilmReveal(event.currentTarget.currentTime>=3.5)} onError={()=>setCraftFilmUnavailable(true)}>
+          <source src="/videos/green-goldsmith-campaign-mobile.mp4" type="video/mp4" media="(max-width: 760px)"/>
+          <source src="/videos/green-goldsmith-campaign.mp4" type="video/mp4"/>
+        </video>}
+        <div className="story-film-copy story-film-craft-copy" aria-hidden="true"><span>THE ART OF JEWELLERY / G852-7</span><strong>手工，一顆一顆。</strong></div>
+        <div className="story-film-copy story-film-product-copy" aria-hidden="true"><span>G852-7 COLLECTION</span><strong>綠境星河</strong><small>把光，戴在腕間。</small></div>
+        <figcaption>金工段落為 AI 示意，非實際工坊紀錄 · 商品段落取自實物照片</figcaption>
       </figure>
       <div className="story-craft-heading story-width" data-story-reveal>
         <p className="story-index">THE HUMAN TOUCH</p>
@@ -60,14 +83,14 @@ export function BrandStory() {
 
     <section className="story-mineral story-width" aria-labelledby="mineral-title">
       <figure className="story-figure" data-story-reveal>
-        <img src="/images/story/mineral-selection.webp" width="1600" height="1075" loading="lazy" alt="原礦、綠色刻面寶石與選石工具的 AI 選材概念示意"/>
-        <figcaption>選材概念 · AI 示意</figcaption>
+        <img src="/images/story/bespoke-strap-consultation.webp" width="1600" height="1195" loading="lazy" alt="私人珠寶錶帶訂製諮詢，展示綠色寶石、錶帶設計草圖及錶帶樣品的 AI 情境示意"/>
+        <figcaption>珠寶錶帶訂製諮詢 · AI 情境示意</figcaption>
       </figure>
       <div className="story-copy" data-story-reveal>
         <p className="story-index">A MINERAL MERCHANT’S EYE</p>
         <h2 id="mineral-title">懂得一顆石，<br/>才能讀懂它的光。</h2>
-        <p>我們是礦石商。從色澤、光感到切面比例，細看每一份選材的可能；再以金工的線條與寶石的排列，寫下屬於您的設計。</p>
-        <a href="#bespoke" className="story-chapter-link">從選石開始 <ArrowUpRight size={15}/></a>
+        <p>我們是礦石商。從色澤、光感到切面比例，與您細選每一顆寶石；再以金工線條與鑲嵌排列，為珍愛的腕錶訂製專屬珠寶錶帶。</p>
+        <a href="#bespoke" className="story-chapter-link">探索珠寶錶帶訂製 <ArrowUpRight size={15}/></a>
       </div>
     </section>
   </div>;
