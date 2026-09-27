@@ -93,7 +93,7 @@ export function BrandStory() {
       </figure>
       <div className="story-copy" data-story-reveal>
         <p className="story-index">A MINERAL MERCHANT’S EYE</p>
-        <h2 id="mineral-title">懂得一顆石，<br/>才能讀懂它的光。</h2>
+        <h2 id="mineral-title">你買的到寶石，<br/>也買的到千年的時間。</h2>
         <p>我們是礦石商。從色澤、光感到切面比例，與您細選每一顆寶石；再以金工線條與鑲嵌排列，為珍愛的腕錶訂製專屬珠寶錶帶。</p>
         <a href="#bespoke" className="story-chapter-link">探索珠寶錶帶訂製 <ArrowUpRight size={15}/></a>
       </div>
