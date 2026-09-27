@@ -102,9 +102,9 @@ export function BrandStory() {
 }
 
 const watchConcepts = [
-  {shape:'Apple Watch',english:'APPLE WATCH',name:'為熟悉的日常，鑲上獨特光彩。',detail:'由錶帶接點、尺寸與金屬色出發，討論專屬寶石排列。',image:'/images/story/bespoke-apple-watch.webp',alt:'Apple Watch 錶殼與可拆換珠寶錶帶分開陳列，清楚展示滑軌式錶帶接點的訂製示意'},
-  {shape:'AP 類型',english:'OCTAGONAL SPORTS WATCH',name:'俐落稜角，延伸珠寶的個性。',detail:'以可更換錶帶的八角形運動腕錶為例，依接點設計珠寶錶帶。',image:'/images/story/bespoke-ap-type.webp',alt:'八角形運動腕錶錶殼與可拆換寶石錶帶分開陳列，展示錶耳與錶帶接點的訂製示意'},
-  {shape:'PP 類型',english:'ROUNDED SPORTS WATCH',name:'經典弧線，映出個人風格。',detail:'以可更換錶帶的圓角運動腕錶為例，依型號規劃選石與比例。',image:'/images/story/bespoke-pp-type.webp',alt:'圓角運動腕錶錶殼與可拆換寶石錶帶分開陳列，展示錶耳與錶帶接點的訂製示意'},
+  {shape:'Apple Watch',english:'APPLE WATCH',name:'為熟悉的日常鑲上獨特光彩。',detail:'從錶帶接點到金屬色為您討論寶石排列。',image:'/images/story/bespoke-apple-watch.webp',alt:'Apple Watch 錶殼與可拆換珠寶錶帶分開陳列，清楚展示滑軌式錶帶接點的訂製示意'},
+  {shape:'AP 類型',english:'OCTAGONAL SPORTS WATCH',name:'俐落稜角延伸珠寶的個性。',detail:'以八角運動腕錶為例規劃珠寶錶帶設計。',image:'/images/story/bespoke-ap-type.webp',alt:'八角形運動腕錶錶殼與可拆換寶石錶帶分開陳列，展示錶耳與錶帶接點的訂製示意'},
+  {shape:'PP 類型',english:'ROUNDED SPORTS WATCH',name:'經典弧線映出個人風格。',detail:'以圓角運動腕錶為例規劃選石與比例。',image:'/images/story/bespoke-pp-type.webp',alt:'圓角運動腕錶錶殼與可拆換寶石錶帶分開陳列，展示錶耳與錶帶接點的訂製示意'},
 ];
 
 export function BespokeStory({onConsult}: {onConsult: () => void}) {

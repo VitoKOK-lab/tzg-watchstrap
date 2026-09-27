@@ -77,8 +77,8 @@
  .bespoke-editorial{grid-template-columns:1fr;gap:26px}
  .story-bespoke-image{width:100%}
  .bespoke-editorial-copy{max-width:none;text-align:center}
- .bespoke-editorial-copy h3{font-size:1.7rem;margin-bottom:10px}
- .bespoke-concept-title>p{font-size:.85rem;min-height:0}
+ .bespoke-editorial-copy h3{font-size:1.7rem;margin-bottom:10px;text-wrap:balance}
+ .bespoke-concept-title>p{font-size:.85rem;min-height:0;text-wrap:balance}
  .bespoke-shapes{justify-content:center;margin:12px 0 25px;gap:28px}
  .bespoke-consult-note{font-size:.85rem;margin-bottom:20px}
  .bespoke-qualification{font-size:.64rem}
