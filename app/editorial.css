@@ -11,6 +11,8 @@
 .atelier-edition .hero-visual img{border-radius:0;object-position:center}
 .atelier-edition .hero-visual:after{background:linear-gradient(90deg,#f8f5efe8 0%,#f8f5efc9 24%,#f8f5ef38 46%,transparent 60%)}
 .atelier-edition .hero-product .hero-copy{padding-left:8%;max-width:590px}
+.atelier-edition .contact-line-hint{display:inline-flex;align-items:center;gap:5px;margin-top:8px;font-size:.72rem;letter-spacing:.02em;color:#b12468}
+.atelier-edition .contact-line-hint:hover{text-decoration:underline;text-underline-offset:3px}
 .atelier-edition .launch-badge{display:inline-flex;align-items:center;gap:.5em;margin-bottom:16px;padding:.45em 1.05em;border-radius:999px;background:#b12468;color:#fff;font-size:.62rem;font-weight:500;letter-spacing:.16em}
 .atelier-edition .hero-product .hero-copy .eyebrow{font-size:.64rem;letter-spacing:.11em;color:#79654a;font-weight:400}
 .atelier-edition .hero-product h1{font-family:var(--editorial-serif);font-size:clamp(2.5rem,4vw,4.5rem);font-weight:400;line-height:1.55;letter-spacing:.06em;margin:25px 0;color:#37322b}
@@ -27,6 +29,7 @@
 .atelier-edition .section-heading .eyebrow,.atelier-edition .consult-intro>.eyebrow{font-size:.62rem;letter-spacing:.18em;color:#8a7352;font-weight:400}
 .atelier-edition .section-heading>p{display:none}
 .atelier-edition .collection-section{padding-top:68px;padding-bottom:85px;border-top:1px solid #ece7dd}
+.atelier-edition .collection-scroll-hint{display:none}
 .atelier-edition .collection-grid{gap:24px}
 .atelier-edition .design-card{padding:0 0 17px;background:#fff;border:0;border-bottom:1px solid #e7e2d9;border-radius:0;box-shadow:none!important}
 .atelier-edition .design-card.active{background:#fff;border-bottom:2px solid #b12468}
@@ -87,8 +90,13 @@
  .atelier-edition .section-heading{margin-bottom:28px}
  .atelier-edition .section-heading h2{font-size:1.8rem;letter-spacing:.03em}
  .atelier-edition .collection-section{padding-top:47px;padding-bottom:58px}
+ .atelier-edition .collection-carousel{position:relative}
  .atelier-edition .collection-grid{display:flex;overflow-x:auto;gap:18px;padding-bottom:12px;scroll-snap-type:x proximity}
- .atelier-edition .design-card{flex:0 0 42%;scroll-snap-align:start;min-width:0;padding-bottom:14px}
+ .atelier-edition .design-card{flex:0 0 40%;scroll-snap-align:start;min-width:0;padding-bottom:14px}
+ .atelier-edition .collection-scroll-hint{display:flex;align-items:center;justify-content:flex-end;position:absolute;top:0;right:0;width:52px;height:calc(100% - 26px);background:linear-gradient(to right,transparent,#fff 65%);pointer-events:none;animation:collection-scroll-nudge 1.8s ease-in-out infinite}
+ .atelier-edition .collection-scroll-hint:after{content:'';width:7px;height:7px;margin-right:8px;border-top:2px solid #b12468;border-right:2px solid #b12468;transform:rotate(45deg)}
+ @keyframes collection-scroll-nudge{0%,100%{opacity:.55}50%{opacity:1}}
+ @media(prefers-reduced-motion:reduce){.atelier-edition .collection-scroll-hint{animation:none;opacity:.8}}
  .atelier-edition .design-caption h3{font-size:.95rem}
  .atelier-edition .design-detail{grid-template-columns:1fr;gap:22px;margin-top:29px}
  .atelier-edition .detail-gallery{position:static}
