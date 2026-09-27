@@ -65,8 +65,8 @@ export function BrandStory() {
   return <div className="brand-story" ref={root} id="craftsmanship">
     <section className="story-intro story-width" aria-labelledby="story-title" data-story-reveal>
       <p className="eyebrow">THE ART OF JEWELLERY</p>
-      <h2 id="story-title">時間流轉，匠心留存。</h2>
-      <p>以礦石商的眼光選材，以工匠的雙手賦形。<br/>將您珍視的獨特，化作腕間的珠寶。</p>
+      <h2 id="story-title">時間流轉，匠心留存</h2>
+      <p>以礦石商的眼光選材，以工匠的雙手賦形<br/>將您珍視的獨特，化作腕間的珠寶</p>
     </section>
 
     <section className="story-craft" id="handcraft" aria-labelledby="craft-title">
@@ -80,8 +80,8 @@ export function BrandStory() {
       </figure>
       <div className="story-craft-heading story-width" data-story-reveal>
         <p className="story-index">THE HUMAN TOUCH</p>
-        <h2 id="craft-title">一顆一顆，成就一件。</h2>
-        <p>從礦石商選石，到工匠逐顆鑲嵌。<br/>每一道金工細節，都為一件值得珍藏的珠寶錶帶而作。</p>
+        <h2 id="craft-title">一顆一顆，成就一件</h2>
+        <p>從礦石商選石，到工匠逐顆鑲嵌<br/>每一道金工細節，都為一件值得珍藏的珠寶錶帶而作</p>
         <a href="#bespoke" className="story-chapter-link">探索專屬訂製 <ArrowUpRight size={15}/></a>
       </div>
     </section>
@@ -93,8 +93,8 @@ export function BrandStory() {
       </figure>
       <div className="story-copy" data-story-reveal>
         <p className="story-index">A MINERAL MERCHANT’S EYE</p>
-        <h2 id="mineral-title">你買的到寶石，<br/>也買的到千年的時間。</h2>
-        <p>我們是礦石商。從色澤、光感到切面比例，與您細選每一顆寶石；再以金工線條與鑲嵌排列，為珍愛的腕錶訂製專屬珠寶錶帶。</p>
+        <h2 id="mineral-title">你買的到寶石，<br/>也買的到千年的時間</h2>
+        <p>我們是礦石商<br/>從色澤、光感到切面比例，與您細選每一顆寶石；再以金工線條與鑲嵌排列，為珍愛的腕錶訂製專屬珠寶錶帶</p>
         <a href="#bespoke" className="story-chapter-link">探索珠寶錶帶訂製 <ArrowUpRight size={15}/></a>
       </div>
     </section>
@@ -134,8 +134,8 @@ export function BespokeStory({onConsult}: {onConsult: () => void}) {
     <section className="story-bespoke" id="bespoke" aria-labelledby="bespoke-title">
       <div className="story-bespoke-heading story-width" data-story-reveal>
         <p className="story-index">BESPOKE CREATIONS</p>
-        <h2 id="bespoke-title">為您而作，<br/>不止一種可能。</h2>
-        <p>不只 Apple Watch。從您珍愛的腕錶出發，<br/>讓寶石、金屬與個人風格，有一場專屬的相遇。</p>
+        <h2 id="bespoke-title">為您而作，<br/>不止一種可能</h2>
+        <p>不只 Apple Watch<br/>從您珍愛的腕錶出發，<br/>讓寶石、金屬與個人風格，有一場專屬的相遇</p>
       </div>
       <div className="bespoke-editorial story-width" data-story-reveal ref={carousel}>
         <figure className="story-figure story-bespoke-image">
@@ -145,9 +145,9 @@ export function BespokeStory({onConsult}: {onConsult: () => void}) {
         <div className="bespoke-editorial-copy">
           <div className="bespoke-copy-stack">{watchConcepts.map((item,index)=><div className={`bespoke-copy-slide${shape===index?' is-active':''}`} key={item.shape} aria-hidden={shape!==index}><p className="story-index">{item.english}</p><div className="bespoke-concept-title"><h3>{item.name}</h3><p>{item.detail}</p></div></div>)}</div>
           <div className="bespoke-shapes" role="group" aria-label="可更換錶帶的腕錶類型示意">{watchConcepts.map((item,index)=><button type="button" key={item.shape} aria-pressed={shape===index} onClick={()=>selectShape(index)}>{item.shape}</button>)}</div>
-          <p className="bespoke-consult-note">分享腕錶品牌、型號與尺寸，<br/>與我們討論選石、金工與專屬設計。</p>
+          <p className="bespoke-consult-note">分享腕錶品牌、型號與尺寸，<br/>與我們討論選石、金工與專屬設計</p>
           <button type="button" className="gold-button" onClick={onConsult}>預約訂製諮詢 <ArrowUpRight size={16}/></button>
-          <p className="bespoke-qualification">實際結構、可製作範圍及報價，依您的錶款確認。</p>
+          <p className="bespoke-qualification">實際結構、可製作範圍及報價，依您的錶款確認</p>
         </div>
       </div>
     </section>
