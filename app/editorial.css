@@ -11,6 +11,7 @@
 .atelier-edition .hero-visual img{border-radius:0;object-position:center}
 .atelier-edition .hero-visual:after{background:linear-gradient(90deg,#f8f5efe8 0%,#f8f5efc9 24%,#f8f5ef38 46%,transparent 60%)}
 .atelier-edition .hero-product .hero-copy{padding-left:8%;max-width:590px}
+.atelier-edition .launch-badge{display:inline-flex;align-items:center;gap:.5em;margin-bottom:16px;padding:.45em 1.05em;border-radius:999px;background:#b12468;color:#fff;font-size:.62rem;font-weight:500;letter-spacing:.16em}
 .atelier-edition .hero-product .hero-copy .eyebrow{font-size:.64rem;letter-spacing:.11em;color:#79654a;font-weight:400}
 .atelier-edition .hero-product h1{font-family:var(--editorial-serif);font-size:clamp(2.5rem,4vw,4.5rem);font-weight:400;line-height:1.55;letter-spacing:.06em;margin:25px 0;color:#37322b}
 .atelier-edition .hero-product h1 span{color:#37322b}
